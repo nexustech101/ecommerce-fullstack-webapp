@@ -21,6 +21,33 @@ uvicorn app.main:app --reload
 - Swagger UI: `http://127.0.0.1:8000/docs`
 - Health: `http://127.0.0.1:8000/api/v1/health`
 
+## Stripe Billing
+
+Copy `.env.example` to `.env` and set your Stripe test keys. Embedded Checkout uses:
+
+- `POST /api/v1/billing/checkout-sessions` for guest or registered customer checkout.
+- `GET /api/v1/billing/checkout-sessions/{session_id}` for return-page status.
+- `POST /api/v1/billing/portal-sessions` for Stripe Customer Portal redirects.
+- `POST /api/v1/billing/webhooks/stripe` for Stripe webhook delivery.
+
+For local webhook testing:
+
+```bash
+stripe listen --forward-to localhost:8000/api/v1/billing/webhooks/stripe
+```
+
+## Frontend
+
+The React frontend lives in `frontend/`.
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Set `frontend/.env` from `frontend/.env.example` when you need to override the API URL.
+
 ## Structure
 
 - `app/main.py`: FastAPI app factory and startup lifecycle

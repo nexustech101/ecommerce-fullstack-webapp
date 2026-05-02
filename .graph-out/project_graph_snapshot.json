@@ -11,16 +11,20 @@
       "size": 64
     },
     "app/api/v1/api.py": {
-      "mtime_ns": 1777740223487365600,
-      "size": 664
+      "mtime_ns": 1777762778982211800,
+      "size": 787
     },
     "app/api/v1/routes/__init__.py": {
-      "mtime_ns": 1777740216494576800,
-      "size": 137
+      "mtime_ns": 1777762782775303300,
+      "size": 157
     },
     "app/api/v1/routes/admin.py": {
-      "mtime_ns": 1777740212798044800,
-      "size": 865
+      "mtime_ns": 1777762790738037200,
+      "size": 1183
+    },
+    "app/api/v1/routes/billing.py": {
+      "mtime_ns": 1777762773304650100,
+      "size": 3385
     },
     "app/api/v1/routes/catalog.py": {
       "mtime_ns": 1777740186062148600,
@@ -43,8 +47,8 @@
       "size": 61
     },
     "app/core/config.py": {
-      "mtime_ns": 1777757466864573700,
-      "size": 2735
+      "mtime_ns": 1777763100500638900,
+      "size": 3481
     },
     "app/core/errors.py": {
       "mtime_ns": 1777740130117460300,
@@ -59,24 +63,28 @@
       "size": 1192
     },
     "app/models/__init__.py": {
-      "mtime_ns": 1777740078422358200,
-      "size": 642
+      "mtime_ns": 1777762674176496500,
+      "size": 938
     },
     "app/models/models.py": {
-      "mtime_ns": 1777754335414299800,
-      "size": 3713
+      "mtime_ns": 1777762668398620100,
+      "size": 5748
     },
     "app/schemas/__init__.py": {
-      "mtime_ns": 1777740092415881700,
-      "size": 941
+      "mtime_ns": 1777762702516969700,
+      "size": 1477
     },
     "app/schemas/schemas.py": {
-      "mtime_ns": 1777740071295919400,
-      "size": 3288
+      "mtime_ns": 1777762692225890500,
+      "size": 5772
     },
     "app/services/__init__.py": {
       "mtime_ns": 1777740115908197600,
       "size": 95
+    },
+    "app/services/billing.py": {
+      "mtime_ns": 1777762755841502100,
+      "size": 11470
     },
     "app/services/common.py": {
       "mtime_ns": 1777740101888867800,
@@ -86,14 +94,94 @@
       "mtime_ns": 1777740112453100200,
       "size": 1551
     },
+    "frontend/src/App.tsx": {
+      "mtime_ns": 1777762941515724200,
+      "size": 1158
+    },
+    "frontend/src/api/client.ts": {
+      "mtime_ns": 1777762941518722500,
+      "size": 1772
+    },
+    "frontend/src/api/types.ts": {
+      "mtime_ns": 1777762941519724200,
+      "size": 1269
+    },
+    "frontend/src/components/Layout.tsx": {
+      "mtime_ns": 1777762941519724200,
+      "size": 852
+    },
+    "frontend/src/components/ProductCard.test.tsx": {
+      "mtime_ns": 1777762941520722900,
+      "size": 948
+    },
+    "frontend/src/components/ProductCard.tsx": {
+      "mtime_ns": 1777762941520722900,
+      "size": 910
+    },
+    "frontend/src/format.test.ts": {
+      "mtime_ns": 1777762941516725200,
+      "size": 259
+    },
+    "frontend/src/format.ts": {
+      "mtime_ns": 1777762941516725200,
+      "size": 289
+    },
+    "frontend/src/main.tsx": {
+      "mtime_ns": 1777762941517723000,
+      "size": 236
+    },
+    "frontend/src/pages/BillingPortalPage.tsx": {
+      "mtime_ns": 1777762941521721800,
+      "size": 1925
+    },
+    "frontend/src/pages/CheckoutReturnPage.tsx": {
+      "mtime_ns": 1777762941521721800,
+      "size": 1997
+    },
+    "frontend/src/pages/EmbeddedCheckoutPage.tsx": {
+      "mtime_ns": 1777762941522852400,
+      "size": 2153
+    },
+    "frontend/src/pages/GuestCheckoutPage.tsx": {
+      "mtime_ns": 1777762941522852400,
+      "size": 2869
+    },
+    "frontend/src/pages/ProductsPage.tsx": {
+      "mtime_ns": 1777762941525859600,
+      "size": 2958
+    },
+    "frontend/src/pages/SubscriptionPlansPage.tsx": {
+      "mtime_ns": 1777762941525859600,
+      "size": 2890
+    },
+    "frontend/src/state/CartContext.tsx": {
+      "mtime_ns": 1777762941526859900,
+      "size": 2437
+    },
+    "frontend/src/test/setup.ts": {
+      "mtime_ns": 1777762941527861200,
+      "size": 44
+    },
+    "frontend/src/vite-env.d.ts": {
+      "mtime_ns": 1777762941517723000,
+      "size": 39
+    },
+    "frontend/vite.config.ts": {
+      "mtime_ns": 1777762941320066600,
+      "size": 253
+    },
     "main.py": {
       "mtime_ns": 1777740256873804200,
       "size": 25
+    },
+    "tests/test_billing.py": {
+      "mtime_ns": 1777762941555225100,
+      "size": 8515
     }
   },
   "detection": {
-    "total_files": 24,
-    "warning": "Corpus is ~2,599 words - fits in a single context window. You may not need a graph.",
+    "total_files": 47,
+    "warning": "Corpus is ~7,046 words - fits in a single context window. You may not need a graph.",
     "error": ""
   }
 }

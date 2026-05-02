@@ -31,8 +31,6 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    
-
     _app_dir: ClassVar[Path] = Path(__file__).resolve().parents[1]
     _default_db_path: ClassVar[str] = str((_app_dir / "db" / "ecommerce.db").resolve())
     CUSTOMER_DATABASE: str = _as_sqlite_url(
@@ -72,13 +70,22 @@ class Settings(BaseSettings):
     stripe_secret_key: str | None = os.getenv("STRIPE_SECRET_KEY")
     stripe_publishable_key: str | None = os.getenv("STRIPE_PUBLISHABLE_KEY")
     stripe_webhook_secret: str | None = os.getenv("STRIPE_WEBHOOK_SECRET")
-    stripe_api_version: str = "2026-02-25.clover"
-    stripe_default_price_id: str | None = None
-    stripe_currency: str = "usd"
-    stripe_return_url: str = "http://localhost:3000/billing/success?session_id={CHECKOUT_SESSION_ID}"
-    stripe_success_url: str = "http://localhost:3000/billing/success?session_id={CHECKOUT_SESSION_ID}"
-    stripe_cancel_url: str = "http://localhost:3000/billing/cancel"
-    stripe_portal_return_url: str = "http://localhost:3000/settings/billing"
+    stripe_api_version: str = os.getenv("STRIPE_API_VERSION", "2026-02-25.clover")
+    stripe_default_price_id: str | None = os.getenv("STRIPE_DEFAULT_PRICE_ID")
+    stripe_currency: str = os.getenv("STRIPE_CURRENCY", "usd")
+    stripe_return_url: str = os.getenv(
+        "STRIPE_RETURN_URL",
+        "http://localhost:3000/billing/success?session_id={CHECKOUT_SESSION_ID}",
+    )
+    stripe_success_url: str = os.getenv(
+        "STRIPE_SUCCESS_URL",
+        "http://localhost:3000/billing/success?session_id={CHECKOUT_SESSION_ID}",
+    )
+    stripe_cancel_url: str = os.getenv("STRIPE_CANCEL_URL", "http://localhost:3000/billing/cancel")
+    stripe_portal_return_url: str = os.getenv(
+        "STRIPE_PORTAL_RETURN_URL",
+        "http://localhost:3000/settings/billing",
+    )
 
     log_level: str = "INFO"
     log_json: bool = True

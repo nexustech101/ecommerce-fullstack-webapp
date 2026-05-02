@@ -1,5 +1,5 @@
 [project]
-name = "ecommerce-backend-example"
+name = "ecommerce-backend"
 version = "1.0.0"
 description = "Ecommerce backend built with FastAPI and registers.db"
 readme = "README.md"

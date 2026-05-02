@@ -83,7 +83,6 @@ async def stripe_webhook(request: Request):
     signature = request.headers.get("stripe-signature")
     if not settings.stripe_webhook_secret:
         raise HTTPException(status_code=503, detail="Stripe webhook secret is not configured")
-
     try:
         event = stripe.Webhook.construct_event(
             payload=payload,
