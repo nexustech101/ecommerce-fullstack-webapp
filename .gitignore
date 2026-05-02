@@ -1,0 +1,59 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+.env
+*.log
+.graph-out/
+
+app/db/*.db-shm
+app/db/*.db-wal
+
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments (highly recommended to ignore)
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables and secrets
+.env
+.flaskenv
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Unit test / coverage reports
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# IDE-specific files (optional but common)
+.vscode/
+.idea/
+*.swp
+
+# Databases and other miscellaneous files
+*.db
+*.fx
+*.log
+*.zip
+*.txt
+*.*shm
+*.*wal
+*graph.md
+.graph-out/
