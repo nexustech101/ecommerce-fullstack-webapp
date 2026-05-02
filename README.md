@@ -21,6 +21,20 @@ uvicorn app.main:app --reload
 - Swagger UI: `http://127.0.0.1:8000/docs`
 - Health: `http://127.0.0.1:8000/api/v1/health`
 
+## Docker
+
+Copy `.env.example` to `.env` and set real Stripe values before running payment flows.
+
+```bash
+docker compose up --build
+```
+
+- Frontend: `http://localhost:8080`
+- Backend API: `http://localhost:8000/api/v1`
+- API docs: `http://localhost:8000/docs`
+
+The Compose setup stores the SQLite database in the `backend-data` Docker volume and serves the Vite frontend through Nginx. Frontend `/api/*` calls are proxied to the backend container.
+
 ## Stripe Billing
 
 Copy `.env.example` to `.env` and set your Stripe test keys. Embedded Checkout uses:
@@ -34,6 +48,15 @@ For local webhook testing:
 
 ```bash
 stripe listen --forward-to localhost:8000/api/v1/billing/webhooks/stripe
+```
+
+## Migrations
+
+Schema migrations live in `app/migrations/` and use `registers.db` lifecycle helpers.
+
+```bash
+python -m app.migrations status
+python -m app.migrations upgrade
 ```
 
 ## Frontend

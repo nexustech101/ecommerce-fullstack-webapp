@@ -31,11 +31,11 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    _app_dir: ClassVar[Path] = Path(__file__).resolve().parents[1]
-    _default_db_path: ClassVar[str] = str((_app_dir / "db" / "ecommerce.db").resolve())
+    _project_dir: ClassVar[Path] = Path(__file__).resolve().parents[2]
+    _default_db_path: ClassVar[str] = str((_project_dir / "app" / "db" / "ecommerce.db").resolve())
     CUSTOMER_DATABASE: str = _as_sqlite_url(
         os.getenv("CUSTOMER_DATABASE", _default_db_path),
-        base_dir=_app_dir,
+        base_dir=_project_dir,
     )
 
     APP_NAME: str = os.getenv("APP_NAME", "Ecommerce API")

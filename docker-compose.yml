@@ -1,0 +1,44 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    image: ecommerce-backend-api:latest
+    env_file:
+      - .env
+    environment:
+      CUSTOMER_DATABASE: /data/ecommerce.db
+      STRIPE_RETURN_URL: http://localhost:8080/billing/success?session_id={CHECKOUT_SESSION_ID}
+      STRIPE_PORTAL_RETURN_URL: http://localhost:8080/settings/billing
+    volumes:
+      - backend-data:/data
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=5)",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: /api/v1
+    image: ecommerce-stripe-frontend:latest
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+
+volumes:
+  backend-data:

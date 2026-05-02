@@ -1,63 +1,7 @@
 from __future__ import annotations
 
-import sys
-from pathlib import Path
 from types import SimpleNamespace
 from uuid import uuid4
-
-import pytest
-from fastapi.testclient import TestClient
-
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(PROJECT_ROOT))
-
-
-@pytest.fixture()
-def client(monkeypatch, tmp_path):
-    db_path = tmp_path / "billing-test.db"
-    monkeypatch.setenv("CUSTOMER_DATABASE", str(db_path))
-    monkeypatch.setenv("STRIPE_ENABLED", "true")
-    monkeypatch.setenv("STRIPE_SECRET_KEY", "sk_test_example")
-    monkeypatch.setenv("STRIPE_PUBLISHABLE_KEY", "pk_test_example")
-    monkeypatch.setenv("STRIPE_WEBHOOK_SECRET", "whsec_example")
-
-    from app.main import app
-
-    with TestClient(app) as test_client:
-        yield test_client
-
-
-@pytest.fixture()
-def models():
-    from app.models import Customer, Product, SubscriptionPlan
-    from app.services.common import utc_now
-
-    suffix = uuid4().hex
-    now = utc_now()
-    product = Product.objects.create(
-        name=f"Test Shirt {suffix}",
-        description="Cotton shirt",
-        price=25.0,
-        stock=5,
-        created_at=now,
-        updated_at=now,
-    )
-    customer = Customer.objects.create(
-        name="Test Customer",
-        email=f"customer-{suffix}@example.com",
-        passwd_hash="hashed",
-        created_at=now,
-        updated_at=now,
-    )
-    plan = SubscriptionPlan.objects.create(
-        name="Monthly Club",
-        description="Recurring membership",
-        stripe_price_id=f"price_{suffix}",
-        active=True,
-        created_at=now,
-        updated_at=now,
-    )
-    return SimpleNamespace(product=product, customer=customer, plan=plan)
 
 
 def patch_stripe(monkeypatch):
@@ -95,7 +39,37 @@ def patch_stripe(monkeypatch):
     )
 
 
-def test_guest_payment_checkout_session_returns_client_secret(client, models, monkeypatch):
+def test_billing_config_and_plan_routes(client, sample_data):
+    from app.models import CustomerSubscription
+    from app.services.common import utc_now
+
+    now = utc_now()
+    CustomerSubscription.objects.create(
+        stripe_subscription_id="sub_visible",
+        stripe_customer_id="cus_visible",
+        customer_id=sample_data.customer.id,
+        status="active",
+        current_period_start=None,
+        current_period_end=None,
+        cancel_at_period_end=False,
+        canceled_at=None,
+        created_at=now,
+        updated_at=now,
+    )
+
+    config = client.get("/api/v1/billing/config")
+    plans = client.get("/api/v1/billing/subscription-plans")
+    subscriptions = client.get(f"/api/v1/billing/customers/{sample_data.customer.id}/subscriptions")
+
+    assert config.status_code == 200
+    assert config.json()["publishable_key"] == "pk_test_example"
+    assert plans.status_code == 200
+    assert plans.json()[0]["id"] == sample_data.plan.id
+    assert subscriptions.status_code == 200
+    assert subscriptions.json()[0]["stripe_subscription_id"] == "sub_visible"
+
+
+def test_guest_payment_checkout_session_returns_client_secret(client, sample_data, monkeypatch):
     patch_stripe(monkeypatch)
 
     response = client.post(
@@ -103,7 +77,7 @@ def test_guest_payment_checkout_session_returns_client_secret(client, models, mo
         json={
             "mode": "payment",
             "guest": {"name": "Guest Buyer", "email": "guest@example.com"},
-            "items": [{"product_id": models.product.id, "quantity": 2}],
+            "items": [{"product_id": sample_data.product.id, "quantity": 2}],
         },
     )
 
@@ -111,16 +85,23 @@ def test_guest_payment_checkout_session_returns_client_secret(client, models, mo
     assert response.json()["session_id"].startswith("cs_payment_")
     assert response.json()["client_secret"] == "secret_payment"
 
+    status = client.get(f"/api/v1/billing/checkout-sessions/{response.json()['session_id']}")
+    missing = client.get("/api/v1/billing/checkout-sessions/cs_missing")
 
-def test_registered_customer_payment_checkout_session_returns_client_secret(client, models, monkeypatch):
+    assert status.status_code == 200
+    assert status.json()["mode"] == "payment"
+    assert missing.status_code == 404
+
+
+def test_registered_customer_payment_checkout_session_returns_client_secret(client, sample_data, monkeypatch):
     patch_stripe(monkeypatch)
 
     response = client.post(
         "/api/v1/billing/checkout-sessions",
         json={
             "mode": "payment",
-            "customer_id": models.customer.id,
-            "items": [{"product_id": models.product.id, "quantity": 1}],
+            "customer_id": sample_data.customer.id,
+            "items": [{"product_id": sample_data.product.id, "quantity": 1}],
         },
     )
 
@@ -128,7 +109,7 @@ def test_registered_customer_payment_checkout_session_returns_client_secret(clie
     assert response.json()["client_secret"] == "secret_payment"
 
 
-def test_subscription_checkout_session_uses_plan_price(client, models, monkeypatch):
+def test_subscription_checkout_session_uses_plan_price(client, sample_data, monkeypatch):
     captured = {}
 
     from app.services import billing
@@ -156,29 +137,70 @@ def test_subscription_checkout_session_uses_plan_price(client, models, monkeypat
         "/api/v1/billing/checkout-sessions",
         json={
             "mode": "subscription",
-            "customer_id": models.customer.id,
-            "plan_id": models.plan.id,
+            "customer_id": sample_data.customer.id,
+            "plan_id": sample_data.plan.id,
         },
     )
 
     assert response.status_code == 201
     assert captured["mode"] == "subscription"
-    assert captured["line_items"] == [{"price": models.plan.stripe_price_id, "quantity": 1}]
+    assert captured["line_items"] == [{"price": sample_data.plan.stripe_price_id, "quantity": 1}]
 
 
-def test_checkout_requires_customer_or_guest(client, models):
+def test_portal_session_route_uses_registered_or_explicit_stripe_customer(client, sample_data, monkeypatch):
+    from app.models import StripeCustomer
+    from app.services.common import utc_now
+    from app.services import billing
+
+    captured = {}
+    now = utc_now()
+    StripeCustomer.objects.create(
+        customer_id=sample_data.customer.id,
+        guest_name=None,
+        guest_email=None,
+        stripe_customer_id="cus_portal",
+        created_at=now,
+        updated_at=now,
+    )
+
+    def fake_create(**kwargs):
+        captured.update(kwargs)
+        return SimpleNamespace(url="https://billing.stripe.test/session")
+
+    monkeypatch.setattr(billing.stripe.billing_portal.Session, "create", fake_create)
+
+    registered = client.post(
+        "/api/v1/billing/portal-sessions",
+        json={"customer_id": sample_data.customer.id, "return_url": "http://localhost:5173/account"},
+    )
+    explicit = client.post(
+        "/api/v1/billing/portal-sessions",
+        json={"stripe_customer_id": "cus_explicit"},
+    )
+    invalid = client.post("/api/v1/billing/portal-sessions", json={})
+    missing = client.post("/api/v1/billing/portal-sessions", json={"customer_id": 999999})
+
+    assert registered.status_code == 200
+    assert registered.json()["url"] == "https://billing.stripe.test/session"
+    assert captured["customer"] == "cus_explicit"
+    assert explicit.status_code == 200
+    assert invalid.status_code == 422
+    assert missing.status_code == 404
+
+
+def test_checkout_requires_customer_or_guest(client, sample_data):
     response = client.post(
         "/api/v1/billing/checkout-sessions",
         json={
             "mode": "payment",
-            "items": [{"product_id": models.product.id, "quantity": 1}],
+            "items": [{"product_id": sample_data.product.id, "quantity": 1}],
         },
     )
 
     assert response.status_code == 422
 
 
-def test_insufficient_stock_fails_cleanly(client, models, monkeypatch):
+def test_insufficient_stock_fails_cleanly(client, sample_data, monkeypatch):
     patch_stripe(monkeypatch)
 
     response = client.post(
@@ -186,7 +208,7 @@ def test_insufficient_stock_fails_cleanly(client, models, monkeypatch):
         json={
             "mode": "payment",
             "guest": {"name": "Guest Buyer", "email": "stock@example.com"},
-            "items": [{"product_id": models.product.id, "quantity": 99}],
+            "items": [{"product_id": sample_data.product.id, "quantity": 99}],
         },
     )
 
@@ -210,14 +232,14 @@ def test_webhook_signature_failure_returns_400(client, monkeypatch):
     assert response.status_code == 400
 
 
-def test_checkout_completed_webhook_is_idempotent(client, models, monkeypatch):
+def test_checkout_completed_webhook_is_idempotent(client, sample_data, monkeypatch):
     patch_stripe(monkeypatch)
     created = client.post(
         "/api/v1/billing/checkout-sessions",
         json={
             "mode": "payment",
             "guest": {"name": "Guest Buyer", "email": "idem@example.com"},
-            "items": [{"product_id": models.product.id, "quantity": 1}],
+            "items": [{"product_id": sample_data.product.id, "quantity": 1}],
         },
     )
     assert created.status_code == 201

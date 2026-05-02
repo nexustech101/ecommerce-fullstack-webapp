@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.test-data/
 
 .env
 *.log
@@ -17,6 +18,7 @@ frontend/.env
 __pycache__/
 *.py[cod]
 *$py.class
+*.pytest_cache/
 
 # Virtual environments (highly recommended to ignore)
 .venv/

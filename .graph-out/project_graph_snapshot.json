@@ -3,8 +3,8 @@
   "project_root": "C:\\Users\\charl\\Documents\\Python\\ecommerce-backend-example",
   "files": {
     "app/__init__.py": {
-      "mtime_ns": 1777740253972318600,
-      "size": 70
+      "mtime_ns": 1777764022286798700,
+      "size": 13
     },
     "app/api/v1/__init__.py": {
       "mtime_ns": 1777740227040526300,
@@ -23,8 +23,8 @@
       "size": 1183
     },
     "app/api/v1/routes/billing.py": {
-      "mtime_ns": 1777762773304650100,
-      "size": 3385
+      "mtime_ns": 1777763316213730400,
+      "size": 3384
     },
     "app/api/v1/routes/catalog.py": {
       "mtime_ns": 1777740186062148600,
@@ -47,8 +47,8 @@
       "size": 61
     },
     "app/core/config.py": {
-      "mtime_ns": 1777763100500638900,
-      "size": 3481
+      "mtime_ns": 1777764058671857000,
+      "size": 3495
     },
     "app/core/errors.py": {
       "mtime_ns": 1777740130117460300,
@@ -174,14 +174,38 @@
       "mtime_ns": 1777740256873804200,
       "size": 25
     },
+    "migrations/__init__.py": {
+      "mtime_ns": 1777763907604519900,
+      "size": 196
+    },
+    "migrations/__main__.py": {
+      "mtime_ns": 1777763912426808800,
+      "size": 74
+    },
+    "migrations/runner.py": {
+      "mtime_ns": 1777763934731121700,
+      "size": 4126
+    },
+    "tests/conftest.py": {
+      "mtime_ns": 1777763871074573700,
+      "size": 3299
+    },
+    "tests/test_api_routes.py": {
+      "mtime_ns": 1777764026839302900,
+      "size": 12160
+    },
     "tests/test_billing.py": {
-      "mtime_ns": 1777762941555225100,
-      "size": 8515
+      "mtime_ns": 1777764086562661000,
+      "size": 9869
+    },
+    "tests/test_migrations.py": {
+      "mtime_ns": 1777764094076554100,
+      "size": 621
     }
   },
   "detection": {
-    "total_files": 47,
-    "warning": "Corpus is ~7,046 words - fits in a single context window. You may not need a graph.",
+    "total_files": 53,
+    "warning": "Corpus is ~8,547 words - fits in a single context window. You may not need a graph.",
     "error": ""
   }
 }

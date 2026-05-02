@@ -11,7 +11,7 @@
       "path": "app/__init__.py",
       "line": 1,
       "kind": "module",
-      "community": 7,
+      "community": 27,
       "qualname": "<module>",
       "signature": "",
       "id": "app/__init__.py::<module>"
@@ -24,7 +24,7 @@
       "path": "app/api/v1/__init__.py",
       "line": 1,
       "kind": "module",
-      "community": 23,
+      "community": 28,
       "qualname": "<module>",
       "signature": "",
       "id": "app/api/v1/__init__.py::<module>"
@@ -37,7 +37,7 @@
       "path": "app/api/v1/api.py",
       "line": 1,
       "kind": "module",
-      "community": 24,
+      "community": 29,
       "qualname": "<module>",
       "signature": "",
       "id": "app/api/v1/api.py::<module>"
@@ -63,7 +63,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 1,
       "kind": "module",
-      "community": 12,
+      "community": 16,
       "qualname": "<module>",
       "signature": "",
       "id": "app/api/v1/routes/admin.py::<module>"
@@ -76,7 +76,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 27,
       "kind": "function",
-      "community": 12,
+      "community": 16,
       "qualname": "create_all_schemas",
       "signature": "create_all_schemas()",
       "id": "app/api/v1/routes/admin.py::create_all_schemas"
@@ -89,7 +89,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 34,
       "kind": "function",
-      "community": 12,
+      "community": 16,
       "qualname": "schema_status",
       "signature": "schema_status()",
       "id": "app/api/v1/routes/admin.py::schema_status"
@@ -102,7 +102,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 39,
       "kind": "function",
-      "community": 12,
+      "community": 16,
       "qualname": "truncate_all",
       "signature": "truncate_all()",
       "id": "app/api/v1/routes/admin.py::truncate_all"
@@ -609,7 +609,7 @@
       "path": "app/core/__init__.py",
       "line": 1,
       "kind": "module",
-      "community": 25,
+      "community": 30,
       "qualname": "<module>",
       "signature": "",
       "id": "app/core/__init__.py::<module>"
@@ -622,7 +622,7 @@
       "path": "app/core/config.py",
       "line": 1,
       "kind": "module",
-      "community": 13,
+      "community": 17,
       "qualname": "<module>",
       "signature": "",
       "id": "app/core/config.py::<module>"
@@ -635,7 +635,7 @@
       "path": "app/core/config.py",
       "line": 15,
       "kind": "function",
-      "community": 13,
+      "community": 17,
       "qualname": "_as_sqlite_url",
       "signature": "_as_sqlite_url(value: str, base_dir: Path) -> str",
       "id": "app/core/config.py::_as_sqlite_url"
@@ -648,7 +648,7 @@
       "path": "app/core/config.py",
       "line": 27,
       "kind": "class",
-      "community": 13,
+      "community": 17,
       "qualname": "Settings",
       "signature": "Settings",
       "id": "app/core/config.py::Settings"
@@ -657,11 +657,11 @@
       "label": "get_settings() -> Settings",
       "file_type": "code",
       "source_file": "app/core/config.py",
-      "source_location": "L97",
+      "source_location": "L95",
       "path": "app/core/config.py",
-      "line": 97,
+      "line": 95,
       "kind": "function",
-      "community": 13,
+      "community": 17,
       "qualname": "get_settings",
       "signature": "get_settings() -> Settings",
       "id": "app/core/config.py::get_settings"
@@ -674,7 +674,7 @@
       "path": "app/core/errors.py",
       "line": 1,
       "kind": "module",
-      "community": 7,
+      "community": 8,
       "qualname": "<module>",
       "signature": "",
       "id": "app/core/errors.py::<module>"
@@ -687,7 +687,7 @@
       "path": "app/core/errors.py",
       "line": 14,
       "kind": "function",
-      "community": 7,
+      "community": 8,
       "qualname": "register_exception_handlers",
       "signature": "register_exception_handlers(app: FastAPI) -> None",
       "id": "app/core/errors.py::register_exception_handlers"
@@ -700,7 +700,7 @@
       "path": "app/core/errors.py",
       "line": 16,
       "kind": "async_function",
-      "community": 7,
+      "community": 8,
       "qualname": "register_exception_handlers.handle_not_found",
       "signature": "handle_not_found(_request, exc: RecordNotFoundError)",
       "id": "app/core/errors.py::register_exception_handlers.handle_not_found"
@@ -713,7 +713,7 @@
       "path": "app/core/errors.py",
       "line": 20,
       "kind": "async_function",
-      "community": 7,
+      "community": 8,
       "qualname": "register_exception_handlers.handle_unique",
       "signature": "handle_unique(_request, _exc: UniqueConstraintError)",
       "id": "app/core/errors.py::register_exception_handlers.handle_unique"
@@ -726,7 +726,7 @@
       "path": "app/core/errors.py",
       "line": 24,
       "kind": "async_function",
-      "community": 7,
+      "community": 8,
       "qualname": "register_exception_handlers.handle_duplicate",
       "signature": "handle_duplicate(_request, _exc: DuplicateKeyError)",
       "id": "app/core/errors.py::register_exception_handlers.handle_duplicate"
@@ -739,7 +739,7 @@
       "path": "app/core/errors.py",
       "line": 28,
       "kind": "async_function",
-      "community": 7,
+      "community": 8,
       "qualname": "register_exception_handlers.handle_query_error",
       "signature": "handle_query_error(_request, exc: InvalidQueryError)",
       "id": "app/core/errors.py::register_exception_handlers.handle_query_error"
@@ -752,7 +752,7 @@
       "path": "app/core/errors.py",
       "line": 32,
       "kind": "async_function",
-      "community": 7,
+      "community": 8,
       "qualname": "register_exception_handlers.handle_registry_error",
       "signature": "handle_registry_error(_request, exc: RegistryError)",
       "id": "app/core/errors.py::register_exception_handlers.handle_registry_error"
@@ -765,7 +765,7 @@
       "path": "app/core/lifecycle.py",
       "line": 1,
       "kind": "module",
-      "community": 7,
+      "community": 8,
       "qualname": "<module>",
       "signature": "",
       "id": "app/core/lifecycle.py::<module>"
@@ -778,7 +778,7 @@
       "path": "app/core/lifecycle.py",
       "line": 10,
       "kind": "function",
-      "community": 7,
+      "community": 8,
       "qualname": "initialize_schemas",
       "signature": "initialize_schemas() -> None",
       "id": "app/core/lifecycle.py::initialize_schemas"
@@ -791,7 +791,7 @@
       "path": "app/core/lifecycle.py",
       "line": 17,
       "kind": "function",
-      "community": 7,
+      "community": 8,
       "qualname": "dispose_engines",
       "signature": "dispose_engines() -> None",
       "id": "app/core/lifecycle.py::dispose_engines"
@@ -804,7 +804,7 @@
       "path": "app/main.py",
       "line": 1,
       "kind": "module",
-      "community": 7,
+      "community": 8,
       "qualname": "<module>",
       "signature": "",
       "id": "app/main.py::<module>"
@@ -817,7 +817,7 @@
       "path": "app/main.py",
       "line": 19,
       "kind": "async_function",
-      "community": 7,
+      "community": 8,
       "qualname": "lifespan",
       "signature": "lifespan(_app: FastAPI)",
       "id": "app/main.py::lifespan"
@@ -830,7 +830,7 @@
       "path": "app/main.py",
       "line": 25,
       "kind": "function",
-      "community": 7,
+      "community": 8,
       "qualname": "create_app",
       "signature": "create_app() -> FastAPI",
       "id": "app/main.py::create_app"
@@ -1961,10 +1961,348 @@
       "path": "main.py",
       "line": 1,
       "kind": "module",
-      "community": 26,
+      "community": 31,
       "qualname": "<module>",
       "signature": "",
       "id": "main.py::<module>"
+    },
+    {
+      "label": "<module>",
+      "file_type": "code",
+      "source_file": "migrations/__init__.py",
+      "source_location": "L1",
+      "path": "migrations/__init__.py",
+      "line": 1,
+      "kind": "module",
+      "community": 9,
+      "qualname": "<module>",
+      "signature": "",
+      "id": "migrations/__init__.py::<module>"
+    },
+    {
+      "label": "<module>",
+      "file_type": "code",
+      "source_file": "migrations/__main__.py",
+      "source_location": "L1",
+      "path": "migrations/__main__.py",
+      "line": 1,
+      "kind": "module",
+      "community": 9,
+      "qualname": "<module>",
+      "signature": "",
+      "id": "migrations/__main__.py::<module>"
+    },
+    {
+      "label": "<module>",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L1",
+      "path": "migrations/runner.py",
+      "line": 1,
+      "kind": "module",
+      "community": 9,
+      "qualname": "<module>",
+      "signature": "",
+      "id": "migrations/runner.py::<module>"
+    },
+    {
+      "label": "MigrationRecord",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L31",
+      "path": "migrations/runner.py",
+      "line": 31,
+      "kind": "class",
+      "community": 9,
+      "qualname": "MigrationRecord",
+      "signature": "MigrationRecord",
+      "id": "migrations/runner.py::MigrationRecord"
+    },
+    {
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L39",
+      "path": "migrations/runner.py",
+      "line": 39,
+      "kind": "class",
+      "community": 9,
+      "qualname": "Migration",
+      "signature": "Migration",
+      "id": "migrations/runner.py::Migration"
+    },
+    {
+      "label": "create_registered_schemas() -> None",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L45",
+      "path": "migrations/runner.py",
+      "line": 45,
+      "kind": "function",
+      "community": 9,
+      "qualname": "create_registered_schemas",
+      "signature": "create_registered_schemas() -> None",
+      "id": "migrations/runner.py::create_registered_schemas"
+    },
+    {
+      "label": "ensure_billing_columns() -> None",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L51",
+      "path": "migrations/runner.py",
+      "line": 51,
+      "kind": "function",
+      "community": 9,
+      "qualname": "ensure_billing_columns",
+      "signature": "ensure_billing_columns() -> None",
+      "id": "migrations/runner.py::ensure_billing_columns"
+    },
+    {
+      "label": "_is_applied(version: str) -> bool",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L76",
+      "path": "migrations/runner.py",
+      "line": 76,
+      "kind": "function",
+      "community": 9,
+      "qualname": "_is_applied",
+      "signature": "_is_applied(version: str) -> bool",
+      "id": "migrations/runner.py::_is_applied"
+    },
+    {
+      "label": "apply_migrations() -> list[str]",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L80",
+      "path": "migrations/runner.py",
+      "line": 80,
+      "kind": "function",
+      "community": 9,
+      "qualname": "apply_migrations",
+      "signature": "apply_migrations() -> list[str]",
+      "id": "migrations/runner.py::apply_migrations"
+    },
+    {
+      "label": "migration_status() -> list[dict[str, str | bool]]",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L98",
+      "path": "migrations/runner.py",
+      "line": 98,
+      "kind": "function",
+      "community": 9,
+      "qualname": "migration_status",
+      "signature": "migration_status() -> list[dict[str, str | bool]]",
+      "id": "migrations/runner.py::migration_status"
+    },
+    {
+      "label": "main() -> None",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L114",
+      "path": "migrations/runner.py",
+      "line": 114,
+      "kind": "function",
+      "community": 9,
+      "qualname": "main",
+      "signature": "main() -> None",
+      "id": "migrations/runner.py::main"
+    },
+    {
+      "label": "<module>",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L1",
+      "path": "tests/conftest.py",
+      "line": 1,
+      "kind": "module",
+      "community": 1,
+      "qualname": "<module>",
+      "signature": "",
+      "id": "tests/conftest.py::<module>"
+    },
+    {
+      "label": "client()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L67",
+      "path": "tests/conftest.py",
+      "line": 67,
+      "kind": "function",
+      "community": 1,
+      "qualname": "client",
+      "signature": "client()",
+      "id": "tests/conftest.py::client"
+    },
+    {
+      "label": "clean_database()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L73",
+      "path": "tests/conftest.py",
+      "line": 73,
+      "kind": "function",
+      "community": 1,
+      "qualname": "clean_database",
+      "signature": "clean_database()",
+      "id": "tests/conftest.py::clean_database"
+    },
+    {
+      "label": "sample_data()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L82",
+      "path": "tests/conftest.py",
+      "line": 82,
+      "kind": "function",
+      "community": 1,
+      "qualname": "sample_data",
+      "signature": "sample_data()",
+      "id": "tests/conftest.py::sample_data"
+    },
+    {
+      "label": "<module>",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L1",
+      "path": "tests/test_api_routes.py",
+      "line": 1,
+      "kind": "module",
+      "community": 11,
+      "qualname": "<module>",
+      "signature": "",
+      "id": "tests/test_api_routes.py::<module>"
+    },
+    {
+      "label": "test_health_route(client)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L22",
+      "path": "tests/test_api_routes.py",
+      "line": 22,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_health_route",
+      "signature": "test_health_route(client)",
+      "id": "tests/test_api_routes.py::test_health_route"
+    },
+    {
+      "label": "test_customer_crud_and_validation_edges(client)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L29",
+      "path": "tests/test_api_routes.py",
+      "line": 29,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_customer_crud_and_validation_edges",
+      "signature": "test_customer_crud_and_validation_edges(client)",
+      "id": "tests/test_api_routes.py::test_customer_crud_and_validation_edges"
+    },
+    {
+      "label": "test_address_routes_default_toggle_and_ownership_validation(client, sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L68",
+      "path": "tests/test_api_routes.py",
+      "line": 68,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_address_routes_default_toggle_and_ownership_validation",
+      "signature": "test_address_routes_default_toggle_and_ownership_validation(client, sample_data)",
+      "id": "tests/test_api_routes.py::test_address_routes_default_toggle_and_ownership_validation"
+    },
+    {
+      "label": "test_payment_method_routes_and_missing_customer(client, sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L113",
+      "path": "tests/test_api_routes.py",
+      "line": 113,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_payment_method_routes_and_missing_customer",
+      "signature": "test_payment_method_routes_and_missing_customer(client, sample_data)",
+      "id": "tests/test_api_routes.py::test_payment_method_routes_and_missing_customer"
+    },
+    {
+      "label": "test_product_routes_filtering_update_and_validation(client, sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L132",
+      "path": "tests/test_api_routes.py",
+      "line": 132,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_product_routes_filtering_update_and_validation",
+      "signature": "test_product_routes_filtering_update_and_validation(client, sample_data)",
+      "id": "tests/test_api_routes.py::test_product_routes_filtering_update_and_validation"
+    },
+    {
+      "label": "test_category_tag_links_and_review_routes(client, sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L159",
+      "path": "tests/test_api_routes.py",
+      "line": 159,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_category_tag_links_and_review_routes",
+      "signature": "test_category_tag_links_and_review_routes(client, sample_data)",
+      "id": "tests/test_api_routes.py::test_category_tag_links_and_review_routes"
+    },
+    {
+      "label": "test_order_checkout_routes_and_compensation_edges(client, sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L216",
+      "path": "tests/test_api_routes.py",
+      "line": 216,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_order_checkout_routes_and_compensation_edges",
+      "signature": "test_order_checkout_routes_and_compensation_edges(client, sample_data)",
+      "id": "tests/test_api_routes.py::test_order_checkout_routes_and_compensation_edges"
+    },
+    {
+      "label": "test_admin_schema_routes_truncate_in_dependency_order(client, sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L285",
+      "path": "tests/test_api_routes.py",
+      "line": 285,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_admin_schema_routes_truncate_in_dependency_order",
+      "signature": "test_admin_schema_routes_truncate_in_dependency_order(client, sample_data)",
+      "id": "tests/test_api_routes.py::test_admin_schema_routes_truncate_in_dependency_order"
+    },
+    {
+      "label": "test_registers_db_model_query_and_collision_edges(sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L298",
+      "path": "tests/test_api_routes.py",
+      "line": 298,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_registers_db_model_query_and_collision_edges",
+      "signature": "test_registers_db_model_query_and_collision_edges(sample_data)",
+      "id": "tests/test_api_routes.py::test_registers_db_model_query_and_collision_edges"
+    },
+    {
+      "label": "test_schema_lifecycle_and_registered_model_writes(sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L321",
+      "path": "tests/test_api_routes.py",
+      "line": 321,
+      "kind": "function",
+      "community": 11,
+      "qualname": "test_schema_lifecycle_and_registered_model_writes",
+      "signature": "test_schema_lifecycle_and_registered_model_writes(sample_data)",
+      "id": "tests/test_api_routes.py::test_schema_lifecycle_and_registered_model_writes"
     },
     {
       "label": "<module>",
@@ -1974,137 +2312,150 @@
       "path": "tests/test_billing.py",
       "line": 1,
       "kind": "module",
-      "community": 8,
+      "community": 7,
       "qualname": "<module>",
       "signature": "",
       "id": "tests/test_billing.py::<module>"
     },
     {
-      "label": "client(monkeypatch, tmp_path)",
-      "file_type": "code",
-      "source_file": "tests/test_billing.py",
-      "source_location": "L16",
-      "path": "tests/test_billing.py",
-      "line": 16,
-      "kind": "function",
-      "community": 8,
-      "qualname": "client",
-      "signature": "client(monkeypatch, tmp_path)",
-      "id": "tests/test_billing.py::client"
-    },
-    {
-      "label": "models()",
-      "file_type": "code",
-      "source_file": "tests/test_billing.py",
-      "source_location": "L31",
-      "path": "tests/test_billing.py",
-      "line": 31,
-      "kind": "function",
-      "community": 8,
-      "qualname": "models",
-      "signature": "models()",
-      "id": "tests/test_billing.py::models"
-    },
-    {
       "label": "patch_stripe(monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L63",
+      "source_location": "L7",
       "path": "tests/test_billing.py",
-      "line": 63,
+      "line": 7,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "patch_stripe",
       "signature": "patch_stripe(monkeypatch)",
       "id": "tests/test_billing.py::patch_stripe"
     },
     {
-      "label": "test_guest_payment_checkout_session_returns_client_secret(client, models, monkeypatch)",
+      "label": "test_billing_config_and_plan_routes(client, sample_data)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L98",
+      "source_location": "L42",
       "path": "tests/test_billing.py",
-      "line": 98,
+      "line": 42,
       "kind": "function",
-      "community": 8,
+      "community": 7,
+      "qualname": "test_billing_config_and_plan_routes",
+      "signature": "test_billing_config_and_plan_routes(client, sample_data)",
+      "id": "tests/test_billing.py::test_billing_config_and_plan_routes"
+    },
+    {
+      "label": "test_guest_payment_checkout_session_returns_client_secret(client, sample_data, monkeypatch)",
+      "file_type": "code",
+      "source_file": "tests/test_billing.py",
+      "source_location": "L72",
+      "path": "tests/test_billing.py",
+      "line": 72,
+      "kind": "function",
+      "community": 7,
       "qualname": "test_guest_payment_checkout_session_returns_client_secret",
-      "signature": "test_guest_payment_checkout_session_returns_client_secret(client, models, monkeypatch)",
+      "signature": "test_guest_payment_checkout_session_returns_client_secret(client, sample_data, monkeypatch)",
       "id": "tests/test_billing.py::test_guest_payment_checkout_session_returns_client_secret"
     },
     {
-      "label": "test_registered_customer_payment_checkout_session_returns_client_secret(client, models, monkeypatch)",
+      "label": "test_registered_customer_payment_checkout_session_returns_client_secret(client, sample_data, monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L115",
+      "source_location": "L96",
       "path": "tests/test_billing.py",
-      "line": 115,
+      "line": 96,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_registered_customer_payment_checkout_session_returns_client_secret",
-      "signature": "test_registered_customer_payment_checkout_session_returns_client_secret(client, models, monkeypatch)",
+      "signature": "test_registered_customer_payment_checkout_session_returns_client_secret(client, sample_data, monkeypatch)",
       "id": "tests/test_billing.py::test_registered_customer_payment_checkout_session_returns_client_secret"
     },
     {
-      "label": "test_subscription_checkout_session_uses_plan_price(client, models, monkeypatch)",
+      "label": "test_subscription_checkout_session_uses_plan_price(client, sample_data, monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L131",
+      "source_location": "L112",
       "path": "tests/test_billing.py",
-      "line": 131,
+      "line": 112,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_subscription_checkout_session_uses_plan_price",
-      "signature": "test_subscription_checkout_session_uses_plan_price(client, models, monkeypatch)",
+      "signature": "test_subscription_checkout_session_uses_plan_price(client, sample_data, monkeypatch)",
       "id": "tests/test_billing.py::test_subscription_checkout_session_uses_plan_price"
     },
     {
       "label": "fake_create(**kwargs)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L143",
+      "source_location": "L124",
       "path": "tests/test_billing.py",
-      "line": 143,
+      "line": 124,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_subscription_checkout_session_uses_plan_price.fake_create",
       "signature": "fake_create(**kwargs)",
       "id": "tests/test_billing.py::test_subscription_checkout_session_uses_plan_price.fake_create"
     },
     {
-      "label": "test_checkout_requires_customer_or_guest(client, models)",
+      "label": "test_portal_session_route_uses_registered_or_explicit_stripe_customer(client, sample_data, monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L169",
+      "source_location": "L150",
       "path": "tests/test_billing.py",
-      "line": 169,
+      "line": 150,
       "kind": "function",
-      "community": 8,
+      "community": 7,
+      "qualname": "test_portal_session_route_uses_registered_or_explicit_stripe_customer",
+      "signature": "test_portal_session_route_uses_registered_or_explicit_stripe_customer(client, sample_data, monkeypatch)",
+      "id": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer"
+    },
+    {
+      "label": "fake_create(**kwargs)",
+      "file_type": "code",
+      "source_file": "tests/test_billing.py",
+      "source_location": "L166",
+      "path": "tests/test_billing.py",
+      "line": 166,
+      "kind": "function",
+      "community": 7,
+      "qualname": "test_portal_session_route_uses_registered_or_explicit_stripe_customer.fake_create",
+      "signature": "fake_create(**kwargs)",
+      "id": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer.fake_create"
+    },
+    {
+      "label": "test_checkout_requires_customer_or_guest(client, sample_data)",
+      "file_type": "code",
+      "source_file": "tests/test_billing.py",
+      "source_location": "L191",
+      "path": "tests/test_billing.py",
+      "line": 191,
+      "kind": "function",
+      "community": 7,
       "qualname": "test_checkout_requires_customer_or_guest",
-      "signature": "test_checkout_requires_customer_or_guest(client, models)",
+      "signature": "test_checkout_requires_customer_or_guest(client, sample_data)",
       "id": "tests/test_billing.py::test_checkout_requires_customer_or_guest"
     },
     {
-      "label": "test_insufficient_stock_fails_cleanly(client, models, monkeypatch)",
+      "label": "test_insufficient_stock_fails_cleanly(client, sample_data, monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L181",
+      "source_location": "L203",
       "path": "tests/test_billing.py",
-      "line": 181,
+      "line": 203,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_insufficient_stock_fails_cleanly",
-      "signature": "test_insufficient_stock_fails_cleanly(client, models, monkeypatch)",
+      "signature": "test_insufficient_stock_fails_cleanly(client, sample_data, monkeypatch)",
       "id": "tests/test_billing.py::test_insufficient_stock_fails_cleanly"
     },
     {
       "label": "test_webhook_signature_failure_returns_400(client, monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L196",
+      "source_location": "L218",
       "path": "tests/test_billing.py",
-      "line": 196,
+      "line": 218,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_webhook_signature_failure_returns_400",
       "signature": "test_webhook_signature_failure_returns_400(client, monkeypatch)",
       "id": "tests/test_billing.py::test_webhook_signature_failure_returns_400"
@@ -2113,40 +2464,66 @@
       "label": "raise_signature_error(**_kwargs)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L199",
+      "source_location": "L221",
       "path": "tests/test_billing.py",
-      "line": 199,
+      "line": 221,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_webhook_signature_failure_returns_400.raise_signature_error",
       "signature": "raise_signature_error(**_kwargs)",
       "id": "tests/test_billing.py::test_webhook_signature_failure_returns_400.raise_signature_error"
     },
     {
-      "label": "test_checkout_completed_webhook_is_idempotent(client, models, monkeypatch)",
+      "label": "test_checkout_completed_webhook_is_idempotent(client, sample_data, monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L213",
+      "source_location": "L235",
       "path": "tests/test_billing.py",
-      "line": 213,
+      "line": 235,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_checkout_completed_webhook_is_idempotent",
-      "signature": "test_checkout_completed_webhook_is_idempotent(client, models, monkeypatch)",
+      "signature": "test_checkout_completed_webhook_is_idempotent(client, sample_data, monkeypatch)",
       "id": "tests/test_billing.py::test_checkout_completed_webhook_is_idempotent"
     },
     {
       "label": "test_subscription_webhook_updates_status(client, monkeypatch)",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L258",
+      "source_location": "L280",
       "path": "tests/test_billing.py",
-      "line": 258,
+      "line": 280,
       "kind": "function",
-      "community": 8,
+      "community": 7,
       "qualname": "test_subscription_webhook_updates_status",
       "signature": "test_subscription_webhook_updates_status(client, monkeypatch)",
       "id": "tests/test_billing.py::test_subscription_webhook_updates_status"
+    },
+    {
+      "label": "<module>",
+      "file_type": "code",
+      "source_file": "tests/test_migrations.py",
+      "source_location": "L1",
+      "path": "tests/test_migrations.py",
+      "line": 1,
+      "kind": "module",
+      "community": 9,
+      "qualname": "<module>",
+      "signature": "",
+      "id": "tests/test_migrations.py::<module>"
+    },
+    {
+      "label": "test_migration_runner_applies_and_records_versions_idempotently()",
+      "file_type": "code",
+      "source_file": "tests/test_migrations.py",
+      "source_location": "L6",
+      "path": "tests/test_migrations.py",
+      "line": 6,
+      "kind": "function",
+      "community": 9,
+      "qualname": "test_migration_runner_applies_and_records_versions_idempotently",
+      "signature": "test_migration_runner_applies_and_records_versions_idempotently()",
+      "id": "tests/test_migrations.py::test_migration_runner_applies_and_records_versions_idempotently"
     },
     {
       "label": "main.py",
@@ -2156,7 +2533,7 @@
       "path": "main.py",
       "line": 1,
       "kind": "code",
-      "community": 27,
+      "community": 32,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_main_py"
     },
     {
@@ -2167,7 +2544,7 @@
       "path": "app/main.py",
       "line": 1,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_main_py"
     },
     {
@@ -2178,7 +2555,7 @@
       "path": "app/main.py",
       "line": 19,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "main_lifespan"
     },
     {
@@ -2189,7 +2566,7 @@
       "path": "app/main.py",
       "line": 25,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "main_create_app"
     },
     {
@@ -2200,7 +2577,7 @@
       "path": "app/__init__.py",
       "line": 1,
       "kind": "code",
-      "community": 28,
+      "community": 33,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_init_py"
     },
     {
@@ -2211,7 +2588,7 @@
       "path": "app/api/v1/api.py",
       "line": 1,
       "kind": "code",
-      "community": 29,
+      "community": 34,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_api_v1_api_py"
     },
     {
@@ -2222,7 +2599,7 @@
       "path": "app/api/v1/__init__.py",
       "line": 1,
       "kind": "code",
-      "community": 30,
+      "community": 35,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_api_v1_init_py"
     },
     {
@@ -2233,7 +2610,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 1,
       "kind": "code",
-      "community": 14,
+      "community": 18,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_api_v1_routes_admin_py"
     },
     {
@@ -2244,7 +2621,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 27,
       "kind": "code",
-      "community": 14,
+      "community": 18,
       "id": "admin_create_all_schemas"
     },
     {
@@ -2255,7 +2632,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 34,
       "kind": "code",
-      "community": 14,
+      "community": 18,
       "id": "admin_schema_status"
     },
     {
@@ -2266,7 +2643,7 @@
       "path": "app/api/v1/routes/admin.py",
       "line": 39,
       "kind": "code",
-      "community": 14,
+      "community": 18,
       "id": "admin_truncate_all"
     },
     {
@@ -2629,7 +3006,7 @@
       "path": "app/api/v1/routes/health.py",
       "line": 1,
       "kind": "code",
-      "community": 17,
+      "community": 21,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_api_v1_routes_health_py"
     },
     {
@@ -2640,7 +3017,7 @@
       "path": "app/api/v1/routes/health.py",
       "line": 7,
       "kind": "code",
-      "community": 17,
+      "community": 21,
       "id": "health_health_check"
     },
     {
@@ -2695,7 +3072,7 @@
       "path": "app/api/v1/routes/__init__.py",
       "line": 1,
       "kind": "code",
-      "community": 31,
+      "community": 36,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_api_v1_routes_init_py"
     },
     {
@@ -2706,7 +3083,7 @@
       "path": "app/core/config.py",
       "line": 1,
       "kind": "code",
-      "community": 11,
+      "community": 15,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_core_config_py"
     },
     {
@@ -2717,7 +3094,7 @@
       "path": "app/core/config.py",
       "line": 15,
       "kind": "code",
-      "community": 11,
+      "community": 15,
       "id": "config_as_sqlite_url"
     },
     {
@@ -2728,7 +3105,7 @@
       "path": "app/core/config.py",
       "line": 27,
       "kind": "code",
-      "community": 11,
+      "community": 15,
       "id": "config_settings"
     },
     {
@@ -2739,18 +3116,18 @@
       "path": "",
       "line": 0,
       "kind": "code",
-      "community": 11,
+      "community": 15,
       "id": "basesettings"
     },
     {
       "label": "get_settings()",
       "file_type": "code",
       "source_file": "app/core/config.py",
-      "source_location": "L97",
+      "source_location": "L95",
       "path": "app/core/config.py",
-      "line": 97,
+      "line": 95,
       "kind": "code",
-      "community": 11,
+      "community": 15,
       "id": "config_get_settings"
     },
     {
@@ -2761,7 +3138,7 @@
       "path": "app/core/errors.py",
       "line": 1,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_core_errors_py"
     },
     {
@@ -2772,7 +3149,7 @@
       "path": "app/core/errors.py",
       "line": 14,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "errors_register_exception_handlers"
     },
     {
@@ -2783,7 +3160,7 @@
       "path": "app/core/lifecycle.py",
       "line": 1,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_core_lifecycle_py"
     },
     {
@@ -2794,7 +3171,7 @@
       "path": "app/core/lifecycle.py",
       "line": 10,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "lifecycle_initialize_schemas"
     },
     {
@@ -2805,7 +3182,7 @@
       "path": "app/core/lifecycle.py",
       "line": 17,
       "kind": "code",
-      "community": 10,
+      "community": 14,
       "id": "lifecycle_dispose_engines"
     },
     {
@@ -2816,7 +3193,7 @@
       "path": "app/core/__init__.py",
       "line": 1,
       "kind": "code",
-      "community": 32,
+      "community": 37,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_core_init_py"
     },
     {
@@ -3025,7 +3402,7 @@
       "path": "app/models/__init__.py",
       "line": 1,
       "kind": "code",
-      "community": 33,
+      "community": 38,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_models_init_py"
     },
     {
@@ -3432,7 +3809,7 @@
       "path": "app/schemas/__init__.py",
       "line": 1,
       "kind": "code",
-      "community": 34,
+      "community": 39,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_schemas_init_py"
     },
     {
@@ -3773,7 +4150,7 @@
       "path": "app/services/__init__.py",
       "line": 1,
       "kind": "code",
-      "community": 35,
+      "community": 40,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_app_services_init_py"
     },
     {
@@ -3784,7 +4161,7 @@
       "path": "frontend/vite.config.ts",
       "line": 1,
       "kind": "code",
-      "community": 36,
+      "community": 41,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_vite_config_ts"
     },
     {
@@ -3795,7 +4172,7 @@
       "path": "frontend/src/App.tsx",
       "line": 1,
       "kind": "code",
-      "community": 37,
+      "community": 42,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_app_tsx"
     },
     {
@@ -3806,7 +4183,7 @@
       "path": "frontend/src/format.test.ts",
       "line": 1,
       "kind": "code",
-      "community": 38,
+      "community": 43,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_format_test_ts"
     },
     {
@@ -3817,7 +4194,7 @@
       "path": "frontend/src/format.ts",
       "line": 1,
       "kind": "code",
-      "community": 16,
+      "community": 20,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_format_ts"
     },
     {
@@ -3828,7 +4205,7 @@
       "path": "frontend/src/format.ts",
       "line": 1,
       "kind": "code",
-      "community": 16,
+      "community": 20,
       "id": "format_formatcurrency"
     },
     {
@@ -3839,7 +4216,7 @@
       "path": "frontend/src/format.ts",
       "line": 8,
       "kind": "code",
-      "community": 16,
+      "community": 20,
       "id": "format_normalizeprice"
     },
     {
@@ -3850,7 +4227,7 @@
       "path": "frontend/src/main.tsx",
       "line": 1,
       "kind": "code",
-      "community": 39,
+      "community": 44,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_main_tsx"
     },
     {
@@ -3861,7 +4238,7 @@
       "path": "frontend/src/vite-env.d.ts",
       "line": 1,
       "kind": "code",
-      "community": 40,
+      "community": 45,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_vite_env_d_ts"
     },
     {
@@ -3872,7 +4249,7 @@
       "path": "frontend/src/api/client.ts",
       "line": 1,
       "kind": "code",
-      "community": 15,
+      "community": 19,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_api_client_ts"
     },
     {
@@ -3883,7 +4260,7 @@
       "path": "frontend/src/api/client.ts",
       "line": 14,
       "kind": "code",
-      "community": 15,
+      "community": 19,
       "id": "client_apierror"
     },
     {
@@ -3894,7 +4271,7 @@
       "path": "frontend/src/api/client.ts",
       "line": 17,
       "kind": "code",
-      "community": 15,
+      "community": 19,
       "id": "client_apierror_constructor"
     },
     {
@@ -3905,7 +4282,7 @@
       "path": "frontend/src/api/client.ts",
       "line": 24,
       "kind": "code",
-      "community": 15,
+      "community": 19,
       "id": "client_request"
     },
     {
@@ -3916,7 +4293,7 @@
       "path": "frontend/src/api/types.ts",
       "line": 1,
       "kind": "code",
-      "community": 41,
+      "community": 46,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_api_types_ts"
     },
     {
@@ -3927,7 +4304,7 @@
       "path": "frontend/src/components/Layout.tsx",
       "line": 1,
       "kind": "code",
-      "community": 18,
+      "community": 22,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_components_layout_tsx"
     },
     {
@@ -3938,7 +4315,7 @@
       "path": "frontend/src/components/Layout.tsx",
       "line": 4,
       "kind": "code",
-      "community": 18,
+      "community": 22,
       "id": "layout_layout"
     },
     {
@@ -3949,7 +4326,7 @@
       "path": "frontend/src/components/ProductCard.test.tsx",
       "line": 1,
       "kind": "code",
-      "community": 42,
+      "community": 47,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_components_productcard_test_tsx"
     },
     {
@@ -3960,7 +4337,7 @@
       "path": "frontend/src/components/ProductCard.tsx",
       "line": 1,
       "kind": "code",
-      "community": 19,
+      "community": 23,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_components_productcard_tsx"
     },
     {
@@ -3971,7 +4348,7 @@
       "path": "frontend/src/components/ProductCard.tsx",
       "line": 9,
       "kind": "code",
-      "community": 19,
+      "community": 23,
       "id": "productcard_productcard"
     },
     {
@@ -3982,7 +4359,7 @@
       "path": "frontend/src/pages/BillingPortalPage.tsx",
       "line": 1,
       "kind": "code",
-      "community": 20,
+      "community": 24,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_pages_billingportalpage_tsx"
     },
     {
@@ -3993,7 +4370,7 @@
       "path": "frontend/src/pages/BillingPortalPage.tsx",
       "line": 10,
       "kind": "code",
-      "community": 20,
+      "community": 24,
       "id": "billingportalpage_openportal"
     },
     {
@@ -4004,7 +4381,7 @@
       "path": "frontend/src/pages/CheckoutReturnPage.tsx",
       "line": 1,
       "kind": "code",
-      "community": 43,
+      "community": 48,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_pages_checkoutreturnpage_tsx"
     },
     {
@@ -4015,7 +4392,7 @@
       "path": "frontend/src/pages/EmbeddedCheckoutPage.tsx",
       "line": 1,
       "kind": "code",
-      "community": 21,
+      "community": 25,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_pages_embeddedcheckoutpage_tsx"
     },
     {
@@ -4026,7 +4403,7 @@
       "path": "frontend/src/pages/EmbeddedCheckoutPage.tsx",
       "line": 7,
       "kind": "code",
-      "community": 21,
+      "community": 25,
       "id": "embeddedcheckoutpage_embeddedcheckoutpage"
     },
     {
@@ -4059,7 +4436,7 @@
       "path": "frontend/src/pages/ProductsPage.tsx",
       "line": 1,
       "kind": "code",
-      "community": 44,
+      "community": 49,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_pages_productspage_tsx"
     },
     {
@@ -4092,7 +4469,7 @@
       "path": "frontend/src/state/CartContext.tsx",
       "line": 1,
       "kind": "code",
-      "community": 22,
+      "community": 26,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_state_cartcontext_tsx"
     },
     {
@@ -4103,7 +4480,7 @@
       "path": "frontend/src/state/CartContext.tsx",
       "line": 25,
       "kind": "code",
-      "community": 22,
+      "community": 26,
       "id": "cartcontext_cartprovider"
     },
     {
@@ -4114,8 +4491,294 @@
       "path": "frontend/src/test/setup.ts",
       "line": 1,
       "kind": "code",
-      "community": 45,
+      "community": 50,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_frontend_src_test_setup_ts"
+    },
+    {
+      "label": "runner.py",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L1",
+      "path": "migrations/runner.py",
+      "line": 1,
+      "kind": "code",
+      "community": 13,
+      "id": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py"
+    },
+    {
+      "label": "MigrationRecord",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L31",
+      "path": "migrations/runner.py",
+      "line": 31,
+      "kind": "code",
+      "community": 0,
+      "id": "runner_migrationrecord"
+    },
+    {
+      "label": "Migration",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L39",
+      "path": "migrations/runner.py",
+      "line": 39,
+      "kind": "code",
+      "community": 0,
+      "id": "runner_migration"
+    },
+    {
+      "label": "create_registered_schemas()",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L45",
+      "path": "migrations/runner.py",
+      "line": 45,
+      "kind": "code",
+      "community": 13,
+      "id": "runner_create_registered_schemas"
+    },
+    {
+      "label": "ensure_billing_columns()",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L51",
+      "path": "migrations/runner.py",
+      "line": 51,
+      "kind": "code",
+      "community": 13,
+      "id": "runner_ensure_billing_columns"
+    },
+    {
+      "label": "_is_applied()",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L76",
+      "path": "migrations/runner.py",
+      "line": 76,
+      "kind": "code",
+      "community": 13,
+      "id": "runner_is_applied"
+    },
+    {
+      "label": "apply_migrations()",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L80",
+      "path": "migrations/runner.py",
+      "line": 80,
+      "kind": "code",
+      "community": 13,
+      "id": "runner_apply_migrations"
+    },
+    {
+      "label": "migration_status()",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L98",
+      "path": "migrations/runner.py",
+      "line": 98,
+      "kind": "code",
+      "community": 13,
+      "id": "runner_migration_status"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "migrations/runner.py",
+      "source_location": "L114",
+      "path": "migrations/runner.py",
+      "line": 114,
+      "kind": "code",
+      "community": 13,
+      "id": "runner_main"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "migrations/__init__.py",
+      "source_location": "L1",
+      "path": "migrations/__init__.py",
+      "line": 1,
+      "kind": "code",
+      "community": 51,
+      "id": "c_users_charl_documents_python_ecommerce_backend_example_migrations_init_py"
+    },
+    {
+      "label": "__main__.py",
+      "file_type": "code",
+      "source_file": "migrations/__main__.py",
+      "source_location": "L1",
+      "path": "migrations/__main__.py",
+      "line": 1,
+      "kind": "code",
+      "community": 52,
+      "id": "c_users_charl_documents_python_ecommerce_backend_example_migrations_main_py"
+    },
+    {
+      "label": "conftest.py",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L1",
+      "path": "tests/conftest.py",
+      "line": 1,
+      "kind": "code",
+      "community": 2,
+      "id": "c_users_charl_documents_python_ecommerce_backend_example_tests_conftest_py"
+    },
+    {
+      "label": "client()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L67",
+      "path": "tests/conftest.py",
+      "line": 67,
+      "kind": "code",
+      "community": 2,
+      "id": "conftest_client"
+    },
+    {
+      "label": "clean_database()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L73",
+      "path": "tests/conftest.py",
+      "line": 73,
+      "kind": "code",
+      "community": 2,
+      "id": "conftest_clean_database"
+    },
+    {
+      "label": "sample_data()",
+      "file_type": "code",
+      "source_file": "tests/conftest.py",
+      "source_location": "L82",
+      "path": "tests/conftest.py",
+      "line": 82,
+      "kind": "code",
+      "community": 2,
+      "id": "conftest_sample_data"
+    },
+    {
+      "label": "test_api_routes.py",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L1",
+      "path": "tests/test_api_routes.py",
+      "line": 1,
+      "kind": "code",
+      "community": 12,
+      "id": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py"
+    },
+    {
+      "label": "test_health_route()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L22",
+      "path": "tests/test_api_routes.py",
+      "line": 22,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_health_route"
+    },
+    {
+      "label": "test_customer_crud_and_validation_edges()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L29",
+      "path": "tests/test_api_routes.py",
+      "line": 29,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_customer_crud_and_validation_edges"
+    },
+    {
+      "label": "test_address_routes_default_toggle_and_ownership_validation()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L68",
+      "path": "tests/test_api_routes.py",
+      "line": 68,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_address_routes_default_toggle_and_ownership_validation"
+    },
+    {
+      "label": "test_payment_method_routes_and_missing_customer()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L113",
+      "path": "tests/test_api_routes.py",
+      "line": 113,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_payment_method_routes_and_missing_customer"
+    },
+    {
+      "label": "test_product_routes_filtering_update_and_validation()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L132",
+      "path": "tests/test_api_routes.py",
+      "line": 132,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_product_routes_filtering_update_and_validation"
+    },
+    {
+      "label": "test_category_tag_links_and_review_routes()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L159",
+      "path": "tests/test_api_routes.py",
+      "line": 159,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_category_tag_links_and_review_routes"
+    },
+    {
+      "label": "test_order_checkout_routes_and_compensation_edges()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L216",
+      "path": "tests/test_api_routes.py",
+      "line": 216,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_order_checkout_routes_and_compensation_edges"
+    },
+    {
+      "label": "test_admin_schema_routes_truncate_in_dependency_order()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L285",
+      "path": "tests/test_api_routes.py",
+      "line": 285,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_admin_schema_routes_truncate_in_dependency_order"
+    },
+    {
+      "label": "test_registers_db_model_query_and_collision_edges()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L298",
+      "path": "tests/test_api_routes.py",
+      "line": 298,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_registers_db_model_query_and_collision_edges"
+    },
+    {
+      "label": "test_schema_lifecycle_and_registered_model_writes()",
+      "file_type": "code",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L321",
+      "path": "tests/test_api_routes.py",
+      "line": 321,
+      "kind": "code",
+      "community": 12,
+      "id": "test_api_routes_test_schema_lifecycle_and_registered_model_writes"
     },
     {
       "label": "test_billing.py",
@@ -4125,144 +4788,154 @@
       "path": "tests/test_billing.py",
       "line": 1,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py"
-    },
-    {
-      "label": "client()",
-      "file_type": "code",
-      "source_file": "tests/test_billing.py",
-      "source_location": "L16",
-      "path": "tests/test_billing.py",
-      "line": 16,
-      "kind": "code",
-      "community": 9,
-      "id": "test_billing_client"
-    },
-    {
-      "label": "models()",
-      "file_type": "code",
-      "source_file": "tests/test_billing.py",
-      "source_location": "L31",
-      "path": "tests/test_billing.py",
-      "line": 31,
-      "kind": "code",
-      "community": 9,
-      "id": "test_billing_models"
     },
     {
       "label": "patch_stripe()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L63",
+      "source_location": "L7",
       "path": "tests/test_billing.py",
-      "line": 63,
+      "line": 7,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_patch_stripe"
+    },
+    {
+      "label": "test_billing_config_and_plan_routes()",
+      "file_type": "code",
+      "source_file": "tests/test_billing.py",
+      "source_location": "L42",
+      "path": "tests/test_billing.py",
+      "line": 42,
+      "kind": "code",
+      "community": 10,
+      "id": "test_billing_test_billing_config_and_plan_routes"
     },
     {
       "label": "test_guest_payment_checkout_session_returns_client_secret()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L98",
+      "source_location": "L72",
       "path": "tests/test_billing.py",
-      "line": 98,
+      "line": 72,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_guest_payment_checkout_session_returns_client_secret"
     },
     {
       "label": "test_registered_customer_payment_checkout_session_returns_client_secret()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L115",
+      "source_location": "L96",
       "path": "tests/test_billing.py",
-      "line": 115,
+      "line": 96,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_registered_customer_payment_checkout_session_returns_client_secret"
     },
     {
       "label": "test_subscription_checkout_session_uses_plan_price()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L131",
+      "source_location": "L112",
       "path": "tests/test_billing.py",
-      "line": 131,
+      "line": 112,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_subscription_checkout_session_uses_plan_price"
+    },
+    {
+      "label": "test_portal_session_route_uses_registered_or_explicit_stripe_customer()",
+      "file_type": "code",
+      "source_file": "tests/test_billing.py",
+      "source_location": "L150",
+      "path": "tests/test_billing.py",
+      "line": 150,
+      "kind": "code",
+      "community": 10,
+      "id": "test_billing_test_portal_session_route_uses_registered_or_explicit_stripe_customer"
     },
     {
       "label": "test_checkout_requires_customer_or_guest()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L169",
+      "source_location": "L191",
       "path": "tests/test_billing.py",
-      "line": 169,
+      "line": 191,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_checkout_requires_customer_or_guest"
     },
     {
       "label": "test_insufficient_stock_fails_cleanly()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L181",
+      "source_location": "L203",
       "path": "tests/test_billing.py",
-      "line": 181,
+      "line": 203,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_insufficient_stock_fails_cleanly"
     },
     {
       "label": "test_webhook_signature_failure_returns_400()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L196",
+      "source_location": "L218",
       "path": "tests/test_billing.py",
-      "line": 196,
+      "line": 218,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_webhook_signature_failure_returns_400"
     },
     {
       "label": "test_checkout_completed_webhook_is_idempotent()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L213",
+      "source_location": "L235",
       "path": "tests/test_billing.py",
-      "line": 213,
+      "line": 235,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_checkout_completed_webhook_is_idempotent"
     },
     {
       "label": "test_subscription_webhook_updates_status()",
       "file_type": "code",
       "source_file": "tests/test_billing.py",
-      "source_location": "L258",
+      "source_location": "L280",
       "path": "tests/test_billing.py",
-      "line": 258,
+      "line": 280,
       "kind": "code",
-      "community": 9,
+      "community": 10,
       "id": "test_billing_test_subscription_webhook_updates_status"
+    },
+    {
+      "label": "test_migrations.py",
+      "file_type": "code",
+      "source_file": "tests/test_migrations.py",
+      "source_location": "L1",
+      "path": "tests/test_migrations.py",
+      "line": 1,
+      "kind": "code",
+      "community": 13,
+      "id": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_migrations_py"
+    },
+    {
+      "label": "test_migration_runner_applies_and_records_versions_idempotently()",
+      "file_type": "code",
+      "source_file": "tests/test_migrations.py",
+      "source_location": "L6",
+      "path": "tests/test_migrations.py",
+      "line": 6,
+      "kind": "code",
+      "community": 13,
+      "id": "test_migrations_test_migration_runner_applies_and_records_versions_idempotently"
     }
   ],
   "links": [
-    {
-      "line": 1,
-      "module": "app.main",
-      "name": "create_app",
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "weight": 1.0,
-      "_src": "app/__init__.py::<module>",
-      "_tgt": "app/main.py::create_app",
-      "source": "app/__init__.py::<module>",
-      "target": "app/main.py::create_app"
-    },
     {
       "line": 1,
       "module": "app.api.v1.routes",
@@ -4474,7 +5147,7 @@
       "target": "app/services/billing.py::handle_stripe_event"
     },
     {
-      "line": 259,
+      "line": 281,
       "module": "app.api.v1.routes",
       "name": "billing",
       "relation": "imports",
@@ -4585,7 +5258,7 @@
       "target": "app/schemas/schemas.py::CustomerSubscriptionOut"
     },
     {
-      "line": 98,
+      "line": 97,
       "expression": "handle_stripe_event",
       "relation": "calls",
       "confidence": "EXTRACTED",
@@ -5650,13 +6323,13 @@
       "weight": 1.0,
       "_src": "app/core/config.py::<module>",
       "_tgt": "app/core/config.py::get_settings",
-      "line": 100,
+      "line": 98,
       "expression": "get_settings",
       "source": "app/core/config.py::<module>",
       "target": "app/core/config.py::get_settings"
     },
     {
-      "line": 38,
+      "line": 36,
       "expression": "_as_sqlite_url",
       "relation": "calls",
       "confidence": "EXTRACTED",
@@ -5667,7 +6340,7 @@
       "target": "app/core/config.py::Settings"
     },
     {
-      "line": 98,
+      "line": 96,
       "expression": "Settings",
       "relation": "calls",
       "confidence": "EXTRACTED",
@@ -7179,7 +7852,7 @@
       "target": "app/services/common.py::utc_now"
     },
     {
-      "line": 134,
+      "line": 153,
       "module": "app.services",
       "name": "billing",
       "relation": "imports",
@@ -7528,7 +8201,43 @@
       "target": "app/services/common.py::require_model"
     },
     {
-      "line": 33,
+      "line": 18,
+      "module": "app.services.common",
+      "name": "utc_now",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "migrations/runner.py::<module>"
+    },
+    {
+      "line": 43,
+      "module": "app.services.common",
+      "name": "utc_now",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/conftest.py::<module>",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "tests/conftest.py::<module>"
+    },
+    {
+      "line": 19,
+      "module": "app.services.common",
+      "name": "utc_now",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "tests/test_api_routes.py::<module>"
+    },
+    {
+      "line": 152,
       "module": "app.services.common",
       "name": "utc_now",
       "relation": "imports",
@@ -7540,15 +8249,70 @@
       "target": "tests/test_billing.py::<module>"
     },
     {
-      "line": 36,
+      "line": 92,
       "expression": "utc_now",
       "relation": "calls",
       "confidence": "EXTRACTED",
       "weight": 1.0,
-      "_src": "tests/test_billing.py::models",
+      "_src": "migrations/runner.py::apply_migrations",
       "_tgt": "app/services/common.py::utc_now",
       "source": "app/services/common.py::utc_now",
-      "target": "tests/test_billing.py::models"
+      "target": "migrations/runner.py::apply_migrations"
+    },
+    {
+      "line": 83,
+      "expression": "utc_now",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/conftest.py::sample_data",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "tests/conftest.py::sample_data"
+    },
+    {
+      "line": 241,
+      "expression": "utc_now",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::test_order_checkout_routes_and_compensation_edges",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "tests/test_api_routes.py::test_order_checkout_routes_and_compensation_edges"
+    },
+    {
+      "line": 305,
+      "expression": "utc_now",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::test_registers_db_model_query_and_collision_edges",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "tests/test_api_routes.py::test_registers_db_model_query_and_collision_edges"
+    },
+    {
+      "line": 46,
+      "expression": "utc_now",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_billing.py::test_billing_config_and_plan_routes",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "tests/test_billing.py::test_billing_config_and_plan_routes"
+    },
+    {
+      "line": 156,
+      "expression": "utc_now",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer",
+      "_tgt": "app/services/common.py::utc_now",
+      "source": "app/services/common.py::utc_now",
+      "target": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer"
     },
     {
       "relation": "contains",
@@ -7641,22 +8405,324 @@
       "target": "app/services/mappers.py::to_order_payment_out"
     },
     {
-      "relation": "contains",
+      "line": 1,
+      "module": "migrations.runner",
+      "name": "Migration",
+      "relation": "imports",
       "confidence": "EXTRACTED",
       "weight": 1.0,
-      "_src": "tests/test_billing.py::<module>",
-      "_tgt": "tests/test_billing.py::client",
-      "source": "tests/test_billing.py::<module>",
-      "target": "tests/test_billing.py::client"
+      "_src": "migrations/__init__.py::<module>",
+      "_tgt": "migrations/runner.py::Migration",
+      "source": "migrations/__init__.py::<module>",
+      "target": "migrations/runner.py::Migration"
+    },
+    {
+      "line": 1,
+      "module": "migrations.runner",
+      "name": "MigrationRecord",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/__init__.py::<module>",
+      "_tgt": "migrations/runner.py::MigrationRecord",
+      "source": "migrations/__init__.py::<module>",
+      "target": "migrations/runner.py::MigrationRecord"
+    },
+    {
+      "line": 1,
+      "module": "migrations.runner",
+      "name": "apply_migrations",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/__init__.py::<module>",
+      "_tgt": "migrations/runner.py::apply_migrations",
+      "source": "migrations/__init__.py::<module>",
+      "target": "migrations/runner.py::apply_migrations"
+    },
+    {
+      "line": 1,
+      "module": "migrations.runner",
+      "name": "migration_status",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/__init__.py::<module>",
+      "_tgt": "migrations/runner.py::migration_status",
+      "source": "migrations/__init__.py::<module>",
+      "target": "migrations/runner.py::migration_status"
+    },
+    {
+      "line": 4,
+      "module": "migrations.runner",
+      "name": "main",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/__main__.py::<module>",
+      "_tgt": "migrations/runner.py::main",
+      "expression": "main",
+      "source": "migrations/__main__.py::<module>",
+      "target": "migrations/runner.py::main"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "weight": 1.0,
-      "_src": "tests/test_billing.py::<module>",
-      "_tgt": "tests/test_billing.py::models",
-      "source": "tests/test_billing.py::<module>",
-      "target": "tests/test_billing.py::models"
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::MigrationRecord",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::MigrationRecord"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::Migration",
+      "line": 72,
+      "expression": "Migration",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::Migration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::create_registered_schemas",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::create_registered_schemas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::ensure_billing_columns",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::ensure_billing_columns"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::_is_applied",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::_is_applied"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::apply_migrations",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::apply_migrations"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::migration_status",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::migration_status"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::<module>",
+      "_tgt": "migrations/runner.py::main",
+      "line": 133,
+      "expression": "main",
+      "source": "migrations/runner.py::<module>",
+      "target": "migrations/runner.py::main"
+    },
+    {
+      "line": 86,
+      "expression": "_is_applied",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::apply_migrations",
+      "_tgt": "migrations/runner.py::_is_applied",
+      "source": "migrations/runner.py::_is_applied",
+      "target": "migrations/runner.py::apply_migrations"
+    },
+    {
+      "line": 108,
+      "expression": "_is_applied",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::migration_status",
+      "_tgt": "migrations/runner.py::_is_applied",
+      "source": "migrations/runner.py::_is_applied",
+      "target": "migrations/runner.py::migration_status"
+    },
+    {
+      "line": 125,
+      "expression": "apply_migrations",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::main",
+      "_tgt": "migrations/runner.py::apply_migrations",
+      "source": "migrations/runner.py::apply_migrations",
+      "target": "migrations/runner.py::main"
+    },
+    {
+      "line": 12,
+      "expression": "apply_migrations",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_migrations.py::test_migration_runner_applies_and_records_versions_idempotently",
+      "_tgt": "migrations/runner.py::apply_migrations",
+      "source": "migrations/runner.py::apply_migrations",
+      "target": "tests/test_migrations.py::test_migration_runner_applies_and_records_versions_idempotently"
+    },
+    {
+      "line": 120,
+      "expression": "migration_status",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "migrations/runner.py::main",
+      "_tgt": "migrations/runner.py::migration_status",
+      "source": "migrations/runner.py::migration_status",
+      "target": "migrations/runner.py::main"
+    },
+    {
+      "line": 13,
+      "expression": "migration_status",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_migrations.py::test_migration_runner_applies_and_records_versions_idempotently",
+      "_tgt": "migrations/runner.py::migration_status",
+      "source": "migrations/runner.py::migration_status",
+      "target": "tests/test_migrations.py::test_migration_runner_applies_and_records_versions_idempotently"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/conftest.py::<module>",
+      "_tgt": "tests/conftest.py::client",
+      "source": "tests/conftest.py::<module>",
+      "target": "tests/conftest.py::client"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/conftest.py::<module>",
+      "_tgt": "tests/conftest.py::clean_database",
+      "source": "tests/conftest.py::<module>",
+      "target": "tests/conftest.py::clean_database"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/conftest.py::<module>",
+      "_tgt": "tests/conftest.py::sample_data",
+      "source": "tests/conftest.py::<module>",
+      "target": "tests/conftest.py::sample_data"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_health_route",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_health_route"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_customer_crud_and_validation_edges",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_customer_crud_and_validation_edges"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_address_routes_default_toggle_and_ownership_validation",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_address_routes_default_toggle_and_ownership_validation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_payment_method_routes_and_missing_customer",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_payment_method_routes_and_missing_customer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_product_routes_filtering_update_and_validation",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_product_routes_filtering_update_and_validation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_category_tag_links_and_review_routes",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_category_tag_links_and_review_routes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_order_checkout_routes_and_compensation_edges",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_order_checkout_routes_and_compensation_edges"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_admin_schema_routes_truncate_in_dependency_order",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_admin_schema_routes_truncate_in_dependency_order"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_registers_db_model_query_and_collision_edges",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_registers_db_model_query_and_collision_edges"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_api_routes.py::<module>",
+      "_tgt": "tests/test_api_routes.py::test_schema_lifecycle_and_registered_model_writes",
+      "source": "tests/test_api_routes.py::<module>",
+      "target": "tests/test_api_routes.py::test_schema_lifecycle_and_registered_model_writes"
     },
     {
       "relation": "contains",
@@ -7666,6 +8732,15 @@
       "_tgt": "tests/test_billing.py::patch_stripe",
       "source": "tests/test_billing.py::<module>",
       "target": "tests/test_billing.py::patch_stripe"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_billing.py::<module>",
+      "_tgt": "tests/test_billing.py::test_billing_config_and_plan_routes",
+      "source": "tests/test_billing.py::<module>",
+      "target": "tests/test_billing.py::test_billing_config_and_plan_routes"
     },
     {
       "relation": "contains",
@@ -7693,6 +8768,15 @@
       "_tgt": "tests/test_billing.py::test_subscription_checkout_session_uses_plan_price",
       "source": "tests/test_billing.py::<module>",
       "target": "tests/test_billing.py::test_subscription_checkout_session_uses_plan_price"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_billing.py::<module>",
+      "_tgt": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer",
+      "source": "tests/test_billing.py::<module>",
+      "target": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer"
     },
     {
       "relation": "contains",
@@ -7740,7 +8824,7 @@
       "target": "tests/test_billing.py::test_subscription_webhook_updates_status"
     },
     {
-      "line": 99,
+      "line": 73,
       "expression": "patch_stripe",
       "relation": "calls",
       "confidence": "EXTRACTED",
@@ -7751,7 +8835,7 @@
       "target": "tests/test_billing.py::test_guest_payment_checkout_session_returns_client_secret"
     },
     {
-      "line": 116,
+      "line": 97,
       "expression": "patch_stripe",
       "relation": "calls",
       "confidence": "EXTRACTED",
@@ -7762,7 +8846,7 @@
       "target": "tests/test_billing.py::test_registered_customer_payment_checkout_session_returns_client_secret"
     },
     {
-      "line": 182,
+      "line": 204,
       "expression": "patch_stripe",
       "relation": "calls",
       "confidence": "EXTRACTED",
@@ -7773,7 +8857,7 @@
       "target": "tests/test_billing.py::test_insufficient_stock_fails_cleanly"
     },
     {
-      "line": 214,
+      "line": 236,
       "expression": "patch_stripe",
       "relation": "calls",
       "confidence": "EXTRACTED",
@@ -7796,10 +8880,28 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "weight": 1.0,
+      "_src": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer",
+      "_tgt": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer.fake_create",
+      "source": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer",
+      "target": "tests/test_billing.py::test_portal_session_route_uses_registered_or_explicit_stripe_customer.fake_create"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
       "_src": "tests/test_billing.py::test_webhook_signature_failure_returns_400",
       "_tgt": "tests/test_billing.py::test_webhook_signature_failure_returns_400.raise_signature_error",
       "source": "tests/test_billing.py::test_webhook_signature_failure_returns_400",
       "target": "tests/test_billing.py::test_webhook_signature_failure_returns_400.raise_signature_error"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "weight": 1.0,
+      "_src": "tests/test_migrations.py::<module>",
+      "_tgt": "tests/test_migrations.py::test_migration_runner_applies_and_records_versions_idempotently",
+      "source": "tests/test_migrations.py::<module>",
+      "target": "tests/test_migrations.py::test_migration_runner_applies_and_records_versions_idempotently"
     },
     {
       "relation": "contains",
@@ -8082,7 +9184,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/api/v1/routes/billing.py",
-      "source_location": "L98",
+      "source_location": "L97",
       "weight": 1.0,
       "_src": "billing_stripe_webhook",
       "_tgt": "billing_handle_stripe_event",
@@ -9061,7 +10163,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/core/config.py",
-      "source_location": "L97",
+      "source_location": "L95",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_app_core_config_py",
       "_tgt": "config_get_settings",
@@ -9083,7 +10185,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "app/core/config.py",
-      "source_location": "L98",
+      "source_location": "L96",
       "weight": 1.0,
       "_src": "config_get_settings",
       "_tgt": "config_settings",
@@ -9837,6 +10939,127 @@
       "_tgt": "basemodel",
       "source": "basemodel",
       "target": "schemas_customersubscriptionout"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "runner_migrationrecord",
+      "_tgt": "basemodel",
+      "source": "basemodel",
+      "target": "runner_migrationrecord"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migrationrecord",
+      "_tgt": "models_order",
+      "source": "models_order",
+      "target": "runner_migrationrecord"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migration",
+      "_tgt": "models_order",
+      "source": "models_order",
+      "target": "runner_migration"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migrationrecord",
+      "_tgt": "models_orderpayment",
+      "source": "models_orderpayment",
+      "target": "runner_migrationrecord"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migration",
+      "_tgt": "models_orderpayment",
+      "source": "models_orderpayment",
+      "target": "runner_migration"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migrationrecord",
+      "_tgt": "models_stripecustomer",
+      "source": "models_stripecustomer",
+      "target": "runner_migrationrecord"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migration",
+      "_tgt": "models_stripecustomer",
+      "source": "models_stripecustomer",
+      "target": "runner_migration"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migrationrecord",
+      "_tgt": "models_billingcheckoutsession",
+      "source": "models_billingcheckoutsession",
+      "target": "runner_migrationrecord"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migration",
+      "_tgt": "models_billingcheckoutsession",
+      "source": "models_billingcheckoutsession",
+      "target": "runner_migration"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migrationrecord",
+      "_tgt": "models_customersubscription",
+      "source": "models_customersubscription",
+      "target": "runner_migrationrecord"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "runner_migration",
+      "_tgt": "models_customersubscription",
+      "source": "models_customersubscription",
+      "target": "runner_migration"
     },
     {
       "relation": "contains",
@@ -10887,13 +12110,73 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "tests/test_billing.py",
-      "source_location": "L36",
+      "source_file": "migrations/runner.py",
+      "source_location": "L92",
       "weight": 1.0,
-      "_src": "test_billing_models",
+      "_src": "runner_apply_migrations",
       "_tgt": "common_utc_now",
       "source": "common_utc_now",
-      "target": "test_billing_models"
+      "target": "runner_apply_migrations"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/conftest.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_src": "conftest_sample_data",
+      "_tgt": "common_utc_now",
+      "source": "common_utc_now",
+      "target": "conftest_sample_data"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L241",
+      "weight": 1.0,
+      "_src": "test_api_routes_test_order_checkout_routes_and_compensation_edges",
+      "_tgt": "common_utc_now",
+      "source": "common_utc_now",
+      "target": "test_api_routes_test_order_checkout_routes_and_compensation_edges"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L304",
+      "weight": 1.0,
+      "_src": "test_api_routes_test_registers_db_model_query_and_collision_edges",
+      "_tgt": "common_utc_now",
+      "source": "common_utc_now",
+      "target": "test_api_routes_test_registers_db_model_query_and_collision_edges"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_billing.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "test_billing_test_billing_config_and_plan_routes",
+      "_tgt": "common_utc_now",
+      "source": "common_utc_now",
+      "target": "test_billing_test_billing_config_and_plan_routes"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_billing.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_src": "test_billing_test_portal_session_route_uses_registered_or_explicit_stripe_customer",
+      "_tgt": "common_utc_now",
+      "source": "common_utc_now",
+      "target": "test_billing_test_portal_session_route_uses_registered_or_explicit_stripe_customer"
     },
     {
       "relation": "contains",
@@ -11140,30 +12423,307 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "tests/test_billing.py",
-      "source_location": "L16",
-      "weight": 1.0,
-      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
-      "_tgt": "test_billing_client",
-      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
-      "target": "test_billing_client"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/test_billing.py",
+      "source_file": "migrations/runner.py",
       "source_location": "L31",
       "weight": 1.0,
-      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
-      "_tgt": "test_billing_models",
-      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
-      "target": "test_billing_models"
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_migrationrecord",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_migrationrecord"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_migration",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_migration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_create_registered_schemas",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_create_registered_schemas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_ensure_billing_columns",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_ensure_billing_columns"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_is_applied",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_is_applied"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_apply_migrations",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_apply_migrations"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_migration_status",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_migration_status"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "_tgt": "runner_main",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_migrations_runner_py",
+      "target": "runner_main"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "runner_apply_migrations",
+      "_tgt": "runner_is_applied",
+      "source": "runner_is_applied",
+      "target": "runner_apply_migrations"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_src": "runner_migration_status",
+      "_tgt": "runner_is_applied",
+      "source": "runner_is_applied",
+      "target": "runner_migration_status"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_src": "runner_main",
+      "_tgt": "runner_apply_migrations",
+      "source": "runner_apply_migrations",
+      "target": "runner_main"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_migrations.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "test_migrations_test_migration_runner_applies_and_records_versions_idempotently",
+      "_tgt": "runner_apply_migrations",
+      "source": "runner_apply_migrations",
+      "target": "test_migrations_test_migration_runner_applies_and_records_versions_idempotently"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "migrations/runner.py",
+      "source_location": "L120",
+      "weight": 1.0,
+      "_src": "runner_main",
+      "_tgt": "runner_migration_status",
+      "source": "runner_migration_status",
+      "target": "runner_main"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_migrations.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "test_migrations_test_migration_runner_applies_and_records_versions_idempotently",
+      "_tgt": "runner_migration_status",
+      "source": "runner_migration_status",
+      "target": "test_migrations_test_migration_runner_applies_and_records_versions_idempotently"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_conftest_py",
+      "_tgt": "conftest_client",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_conftest_py",
+      "target": "conftest_client"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_conftest_py",
+      "_tgt": "conftest_clean_database",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_conftest_py",
+      "target": "conftest_clean_database"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/conftest.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_conftest_py",
+      "_tgt": "conftest_sample_data",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_conftest_py",
+      "target": "conftest_sample_data"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_health_route",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_health_route"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_customer_crud_and_validation_edges",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_customer_crud_and_validation_edges"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_address_routes_default_toggle_and_ownership_validation",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_address_routes_default_toggle_and_ownership_validation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_payment_method_routes_and_missing_customer",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_payment_method_routes_and_missing_customer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_product_routes_filtering_update_and_validation",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_product_routes_filtering_update_and_validation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L159",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_category_tag_links_and_review_routes",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_category_tag_links_and_review_routes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L216",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_order_checkout_routes_and_compensation_edges",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_order_checkout_routes_and_compensation_edges"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L285",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_admin_schema_routes_truncate_in_dependency_order",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_admin_schema_routes_truncate_in_dependency_order"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_registers_db_model_query_and_collision_edges",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_registers_db_model_query_and_collision_edges"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_api_routes.py",
+      "source_location": "L321",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "_tgt": "test_api_routes_test_schema_lifecycle_and_registered_model_writes",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_api_routes_py",
+      "target": "test_api_routes_test_schema_lifecycle_and_registered_model_writes"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L63",
+      "source_location": "L7",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_patch_stripe",
@@ -11174,7 +12734,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L98",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
+      "_tgt": "test_billing_test_billing_config_and_plan_routes",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
+      "target": "test_billing_test_billing_config_and_plan_routes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_billing.py",
+      "source_location": "L72",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_guest_payment_checkout_session_returns_client_secret",
@@ -11185,7 +12756,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L115",
+      "source_location": "L96",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_registered_customer_payment_checkout_session_returns_client_secret",
@@ -11196,7 +12767,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L131",
+      "source_location": "L112",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_subscription_checkout_session_uses_plan_price",
@@ -11207,7 +12778,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L169",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
+      "_tgt": "test_billing_test_portal_session_route_uses_registered_or_explicit_stripe_customer",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
+      "target": "test_billing_test_portal_session_route_uses_registered_or_explicit_stripe_customer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_billing.py",
+      "source_location": "L191",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_checkout_requires_customer_or_guest",
@@ -11218,7 +12800,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L181",
+      "source_location": "L203",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_insufficient_stock_fails_cleanly",
@@ -11229,7 +12811,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L196",
+      "source_location": "L218",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_webhook_signature_failure_returns_400",
@@ -11240,7 +12822,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L213",
+      "source_location": "L235",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_checkout_completed_webhook_is_idempotent",
@@ -11251,7 +12833,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L258",
+      "source_location": "L280",
       "weight": 1.0,
       "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_billing_py",
       "_tgt": "test_billing_test_subscription_webhook_updates_status",
@@ -11262,7 +12844,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L99",
+      "source_location": "L73",
       "weight": 1.0,
       "_src": "test_billing_test_guest_payment_checkout_session_returns_client_secret",
       "_tgt": "test_billing_patch_stripe",
@@ -11273,7 +12855,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L116",
+      "source_location": "L97",
       "weight": 1.0,
       "_src": "test_billing_test_registered_customer_payment_checkout_session_returns_client_secret",
       "_tgt": "test_billing_patch_stripe",
@@ -11284,7 +12866,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L182",
+      "source_location": "L204",
       "weight": 1.0,
       "_src": "test_billing_test_insufficient_stock_fails_cleanly",
       "_tgt": "test_billing_patch_stripe",
@@ -11295,12 +12877,23 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_billing.py",
-      "source_location": "L214",
+      "source_location": "L236",
       "weight": 1.0,
       "_src": "test_billing_test_checkout_completed_webhook_is_idempotent",
       "_tgt": "test_billing_patch_stripe",
       "source": "test_billing_patch_stripe",
       "target": "test_billing_test_checkout_completed_webhook_is_idempotent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_migrations.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_migrations_py",
+      "_tgt": "test_migrations_test_migration_runner_applies_and_records_versions_idempotently",
+      "source": "c_users_charl_documents_python_ecommerce_backend_example_tests_test_migrations_py",
+      "target": "test_migrations_test_migration_runner_applies_and_records_versions_idempotently"
     }
   ]
 }
