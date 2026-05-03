@@ -13,6 +13,7 @@ from app.models import (
     CustomerSubscription,
     Order,
     OrderPayment,
+    Product,
     StripeCustomer,
 )
 from app.services.common import utc_now
@@ -67,9 +68,14 @@ def ensure_billing_columns() -> None:
     CustomerSubscription.objects.ensure_column("canceled_at", str, nullable=True)
 
 
+def ensure_product_image_url() -> None:
+    Product.objects.ensure_column("image_url", str, nullable=True)
+
+
 MIGRATIONS = (
     Migration("0001", "create_registered_schemas", create_registered_schemas),
     Migration("0002", "ensure_billing_columns", ensure_billing_columns),
+    Migration("0003", "ensure_product_image_url", ensure_product_image_url),
 )
 
 

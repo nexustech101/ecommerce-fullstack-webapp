@@ -31,6 +31,7 @@ def create_product(payload: ProductCreate):
     product = Product.objects.create(
         name=payload.name,
         description=payload.description,
+        image_url=payload.image_url,
         price=payload.price,
         stock=payload.stock,
         created_at=now,

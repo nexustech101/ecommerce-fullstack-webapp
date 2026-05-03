@@ -75,17 +75,18 @@ class Settings(BaseSettings):
     stripe_currency: str = os.getenv("STRIPE_CURRENCY", "usd")
     stripe_return_url: str = os.getenv(
         "STRIPE_RETURN_URL",
-        "http://localhost:3000/billing/success?session_id={CHECKOUT_SESSION_ID}",
+        "http://localhost:3000/checkout/return?session_id={CHECKOUT_SESSION_ID}",
     )
     stripe_success_url: str = os.getenv(
         "STRIPE_SUCCESS_URL",
-        "http://localhost:3000/billing/success?session_id={CHECKOUT_SESSION_ID}",
+        "http://localhost:3000/checkout/return?session_id={CHECKOUT_SESSION_ID}",
     )
     stripe_cancel_url: str = os.getenv("STRIPE_CANCEL_URL", "http://localhost:3000/billing/cancel")
     stripe_portal_return_url: str = os.getenv(
         "STRIPE_PORTAL_RETURN_URL",
-        "http://localhost:3000/settings/billing",
+        "http://localhost:3000/portal",
     )
+    seed_sample_data: bool = os.getenv("SEED_SAMPLE_DATA", "false").lower() == "true"
 
     log_level: str = "INFO"
     log_json: bool = True

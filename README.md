@@ -59,6 +59,25 @@ python -m app.migrations status
 python -m app.migrations upgrade
 ```
 
+## Sample Catalog
+
+Seed demo products, categories, tags, and subscription plans for frontend purchase simulations:
+
+```bash
+python -m app.seed
+```
+
+Or call `POST /api/v1/admin/seed/sample-catalog`. The seed is idempotent and refreshes sample product images/prices without duplicating products. Set `SEED_SAMPLE_DATA=true` to seed automatically on backend startup.
+
+## Optional Accounts
+
+Guest checkout remains supported. Optional account flows are available at:
+
+- `POST /api/v1/auth/signup`
+- `POST /api/v1/auth/signin`
+
+The frontend stores the returned customer profile locally and can pass `customer_id` to checkout sessions.
+
 ## Frontend
 
 The React frontend lives in `frontend/`.

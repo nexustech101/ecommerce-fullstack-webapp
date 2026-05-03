@@ -1,8 +1,10 @@
 import { FormEvent, useState } from "react";
 import { api } from "../api/client";
+import { useAccount } from "../state/AccountContext";
 
 export function BillingPortalPage() {
-  const [customerId, setCustomerId] = useState("");
+  const { customer } = useAccount();
+  const [customerId, setCustomerId] = useState(customer ? String(customer.id) : "");
   const [stripeCustomerId, setStripeCustomerId] = useState("");
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(false);

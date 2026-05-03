@@ -3,9 +3,12 @@ import type {
   CheckoutSessionStatus,
   CreateCheckoutSessionRequest,
   CreateCheckoutSessionResponse,
+  AuthCustomerResponse,
   PortalSessionRequest,
   PortalSessionResponse,
   Product,
+  SignInRequest,
+  SignUpRequest,
   SubscriptionPlan
 } from "./types";
 
@@ -41,6 +44,16 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 export const api = {
   listProducts: () => request<Product[]>("/products"),
   getProduct: (id: number) => request<Product>(`/products/${id}`),
+  signUp: (body: SignUpRequest) =>
+    request<AuthCustomerResponse>("/auth/signup", {
+      method: "POST",
+      body: JSON.stringify(body)
+    }),
+  signIn: (body: SignInRequest) =>
+    request<AuthCustomerResponse>("/auth/signin", {
+      method: "POST",
+      body: JSON.stringify(body)
+    }),
   getBillingConfig: () => request<BillingConfig>("/billing/config"),
   createCheckoutSession: (body: CreateCheckoutSessionRequest) =>
     request<CreateCheckoutSessionResponse>("/billing/checkout-sessions", {

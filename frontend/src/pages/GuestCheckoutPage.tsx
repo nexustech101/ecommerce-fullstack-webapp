@@ -2,13 +2,16 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../api/client";
 import { formatCurrency } from "../format";
+import { useAccount } from "../state/AccountContext";
 import { useCart } from "../state/CartContext";
 
 export function GuestCheckoutPage() {
   const navigate = useNavigate();
+  const { customer } = useAccount();
   const { lines, subtotal, checkoutItems, guest, setGuest } = useCart();
   const [name, setName] = useState(guest?.name ?? "");
   const [email, setEmail] = useState(guest?.email ?? "");
+  const [checkoutIdentity, setCheckoutIdentity] = useState<"account" | "guest">(customer ? "account" : "guest");
   const [error, setError] = useState<string>();
   const [submitting, setSubmitting] = useState(false);
 
@@ -19,10 +22,13 @@ export function GuestCheckoutPage() {
 
     try {
       const trimmedGuest = { name: name.trim(), email: email.trim() };
-      setGuest(trimmedGuest);
+      if (checkoutIdentity === "guest") {
+        setGuest(trimmedGuest);
+      }
       const session = await api.createCheckoutSession({
         mode: "payment",
-        guest: trimmedGuest,
+        customer_id: checkoutIdentity === "account" ? customer?.id : undefined,
+        guest: checkoutIdentity === "guest" ? trimmedGuest : undefined,
         items: checkoutItems
       });
       navigate(`/checkout/embedded?client_secret=${encodeURIComponent(session.client_secret)}&session_id=${encodeURIComponent(session.session_id)}`);
@@ -36,21 +42,54 @@ export function GuestCheckoutPage() {
   return (
     <section className="form-page">
       <div>
-        <p className="eyebrow">Guest checkout</p>
+        <p className="eyebrow">Checkout</p>
         <h1>Confirm your order details</h1>
-        <p className="muted">Payment details are collected by Stripe in the next step.</p>
+        <p className="muted">Use your optional shop account or continue as a guest. Payment details are collected by Stripe.</p>
       </div>
 
       <div className="checkout-layout">
         <form className="panel form-card" onSubmit={handleSubmit}>
-          <label>
-            Name
-            <input required value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" />
-          </label>
-          <label>
-            Email
-            <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" />
-          </label>
+          {customer ? (
+            <div className="identity-options" role="radiogroup" aria-label="Checkout identity">
+              <label>
+                <input
+                  type="radio"
+                  checked={checkoutIdentity === "account"}
+                  onChange={() => setCheckoutIdentity("account")}
+                />
+                <span>Use account: <strong>{customer.name}</strong></span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  checked={checkoutIdentity === "guest"}
+                  onChange={() => setCheckoutIdentity("guest")}
+                />
+                <span>Checkout as guest</span>
+              </label>
+            </div>
+          ) : null}
+
+          {checkoutIdentity === "guest" ? (
+            <>
+              <label>
+                Name
+                <input required value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" />
+              </label>
+              <label>
+                Email
+                <input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" />
+              </label>
+            </>
+          ) : (
+            <div className="account-summary">
+              <span className="account-avatar">{customer?.name.slice(0, 1).toUpperCase()}</span>
+              <div>
+                <strong>{customer?.name}</strong>
+                <p className="muted">{customer?.email}</p>
+              </div>
+            </div>
+          )}
           {error ? <p className="error">{error}</p> : null}
           <button className="primary-button" disabled={submitting || lines.length === 0}>
             {submitting ? "Creating session..." : "Continue to secure checkout"}

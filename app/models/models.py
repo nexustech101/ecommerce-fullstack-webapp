@@ -52,6 +52,7 @@ class Product(BaseModel):
     id: int | None = None
     name: str
     description: str
+    image_url: str | None = None
     price: float
     stock: int
     created_at: str

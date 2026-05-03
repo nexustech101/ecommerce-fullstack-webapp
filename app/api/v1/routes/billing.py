@@ -35,7 +35,15 @@ def billing_config():
 
 @router.post("/checkout-sessions", response_model=CheckoutSessionCreateOut, status_code=201)
 def create_billing_checkout_session(payload: CreateCheckoutSession):
-    session = create_checkout_session(payload)
+    try:
+        session = create_checkout_session(payload)
+    except stripe.error.AuthenticationError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Stripe authentication failed. Check STRIPE_SECRET_KEY.",
+        ) from exc
+    except stripe.error.StripeError as exc:
+        raise HTTPException(status_code=502, detail="Stripe checkout request failed") from exc
     return CheckoutSessionCreateOut(
         session_id=session.stripe_session_id,
         client_secret=session.client_secret,
@@ -59,7 +67,15 @@ def get_checkout_session(session_id: str):
 
 @router.post("/portal-sessions", response_model=PortalSessionOut)
 def create_billing_portal_session(payload: PortalSessionCreate):
-    return PortalSessionOut(url=create_portal_session(payload))
+    try:
+        return PortalSessionOut(url=create_portal_session(payload))
+    except stripe.error.AuthenticationError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Stripe authentication failed. Check STRIPE_SECRET_KEY.",
+        ) from exc
+    except stripe.error.StripeError as exc:
+        raise HTTPException(status_code=502, detail="Stripe portal request failed") from exc
 
 
 @router.get("/subscription-plans", response_model=list[SubscriptionPlanOut])

@@ -19,6 +19,7 @@ from app.models import (
     Tag,
     MODEL_REGISTRY,
 )
+from app.services.seed import seed_sample_catalog
 
 router = APIRouter()
 
@@ -60,3 +61,8 @@ def truncate_all():
     ):
         model.truncate()
     return {"ok": True}
+
+
+@router.post("/admin/seed/sample-catalog")
+def seed_sample_catalog_route():
+    return seed_sample_catalog()

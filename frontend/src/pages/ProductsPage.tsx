@@ -4,12 +4,16 @@ import { api } from "../api/client";
 import type { Product } from "../api/types";
 import { ProductCard } from "../components/ProductCard";
 import { formatCurrency } from "../format";
+import { useAccount } from "../state/AccountContext";
 import { useCart } from "../state/CartContext";
 
 export function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>();
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<"featured" | "price-asc" | "price-desc">("featured");
+  const { customer } = useAccount();
   const { addProduct, lines, subtotal, decrementProduct, removeProduct } = useCart();
 
   useEffect(() => {
@@ -20,14 +24,30 @@ export function ProductsPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  const visibleProducts = products
+    .filter((product) => {
+      const haystack = `${product.name} ${product.description}`.toLowerCase();
+      return haystack.includes(query.trim().toLowerCase());
+    })
+    .sort((left, right) => {
+      if (sort === "price-asc") return left.price - right.price;
+      if (sort === "price-desc") return right.price - left.price;
+      return right.id - left.id;
+    });
+
   return (
     <div className="page-grid">
       <section className="hero-panel">
-        <p className="eyebrow">Stripe Embedded Checkout ready</p>
-        <h1>Premium essentials with a checkout flow customers trust.</h1>
+        <p className="eyebrow">Spring catalog now open</p>
+        <h1>Useful goods for desk, trail, kitchen, and slow weekends.</h1>
         <p>
-          Browse the catalog, build a cart, and launch a secure embedded Stripe Checkout Session.
+          Browse seeded products, build a realistic cart, and test guest or account checkout through Stripe Embedded Checkout.
         </p>
+        <div className="hero-stats" aria-label="Shop highlights">
+          <span><strong>{products.length || "8"}</strong> sample products</span>
+          <span><strong>Guest</strong> checkout ready</span>
+          <span><strong>Stripe</strong> test mode</span>
+        </div>
       </section>
 
       <aside className="cart-panel" aria-label="Shopping cart">
@@ -54,20 +74,40 @@ export function ProductsPage() {
           <span>Subtotal</span>
           <strong>{formatCurrency(subtotal)}</strong>
         </div>
+        {customer ? (
+          <p className="account-note">Checking out as <strong>{customer.name}</strong></p>
+        ) : (
+          <p className="account-note"><Link to="/account">Sign in</Link> for account checkout, or continue as a guest.</p>
+        )}
         <Link className="primary-link" aria-disabled={lines.length === 0} to={lines.length ? "/checkout" : "#"}>
-          Checkout as guest
+          Checkout
         </Link>
       </aside>
 
       <section className="catalog-section">
         <div className="section-heading">
-          <p className="eyebrow">Catalog</p>
-          <h2>Featured products</h2>
+          <div>
+            <p className="eyebrow">Catalog</p>
+            <h2>Featured products</h2>
+          </div>
+          <div className="catalog-tools">
+            <input
+              aria-label="Search products"
+              placeholder="Search products"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+            <select aria-label="Sort products" value={sort} onChange={(event) => setSort(event.target.value as typeof sort)}>
+              <option value="featured">Newest first</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </div>
         </div>
         {loading ? <p>Loading products...</p> : null}
         {error ? <p className="error">{error}</p> : null}
         <div className="product-grid">
-          {products.map((product) => (
+          {visibleProducts.map((product) => (
             <ProductCard key={product.id} product={product} onAdd={addProduct} />
           ))}
         </div>

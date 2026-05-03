@@ -2,10 +2,34 @@ export type Product = {
   id: number;
   name: string;
   description: string;
+  image_url?: string | null;
   price: number;
   stock: number;
   created_at: string;
   updated_at: string;
+};
+
+export type Customer = {
+  id: number;
+  name: string;
+  email: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type SignUpRequest = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+export type SignInRequest = {
+  email: string;
+  password: string;
+};
+
+export type AuthCustomerResponse = {
+  customer: Customer;
 };
 
 export type BillingConfig = {

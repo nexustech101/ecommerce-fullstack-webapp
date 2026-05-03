@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Product } from "../api/types";
 import { formatCurrency } from "../format";
 
@@ -8,14 +9,23 @@ type ProductCardProps = {
 
 export function ProductCard({ product, onAdd }: ProductCardProps) {
   const outOfStock = product.stock <= 0;
+  const [imageFailed, setImageFailed] = useState(false);
+  const showImage = Boolean(product.image_url && !imageFailed);
 
   return (
     <article className="product-card">
-      <div className="product-visual" aria-hidden="true">
-        {product.name.slice(0, 2).toUpperCase()}
+      <div className="product-visual">
+        {showImage ? (
+          <img src={product.image_url ?? ""} alt={product.name} loading="lazy" onError={() => setImageFailed(true)} />
+        ) : (
+          <div className="product-placeholder" aria-hidden="true">
+            <span>{product.name.slice(0, 2).toUpperCase()}</span>
+          </div>
+        )}
+        <span className="stock-badge">{outOfStock ? "Sold out" : `${product.stock} available`}</span>
       </div>
       <div className="product-copy">
-        <p className="eyebrow">In stock: {product.stock}</p>
+        <p className="eyebrow">Northstar Goods</p>
         <h3>{product.name}</h3>
         <p>{product.description}</p>
       </div>

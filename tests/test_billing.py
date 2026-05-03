@@ -200,6 +200,54 @@ def test_checkout_requires_customer_or_guest(client, sample_data):
     assert response.status_code == 422
 
 
+def test_checkout_with_placeholder_stripe_secret_returns_503(client, sample_data, monkeypatch):
+    from app.services import billing
+
+    monkeypatch.setattr(billing.settings, "stripe_enabled", True)
+    monkeypatch.setattr(billing.settings, "stripe_secret_key", "sk_test_replace_me")
+    monkeypatch.setattr(
+        billing.stripe.Customer,
+        "create",
+        lambda **_kwargs: (_ for _ in ()).throw(AssertionError("Stripe should not be called")),
+    )
+
+    response = client.post(
+        "/api/v1/billing/checkout-sessions",
+        json={
+            "mode": "payment",
+            "guest": {"name": "Guest Buyer", "email": "placeholder@example.com"},
+            "items": [{"product_id": sample_data.product.id, "quantity": 1}],
+        },
+    )
+
+    assert response.status_code == 503
+    assert "Stripe secret key is not configured" in response.json()["detail"]
+
+
+def test_checkout_stripe_authentication_error_returns_503(client, sample_data, monkeypatch):
+    from app.services import billing
+
+    monkeypatch.setattr(billing.settings, "stripe_enabled", True)
+    monkeypatch.setattr(billing.settings, "stripe_secret_key", "sk_test_real_shape")
+
+    def raise_authentication_error(**_kwargs):
+        raise billing.stripe.error.AuthenticationError("Invalid API key", http_status=401)
+
+    monkeypatch.setattr(billing.stripe.Customer, "create", raise_authentication_error)
+
+    response = client.post(
+        "/api/v1/billing/checkout-sessions",
+        json={
+            "mode": "payment",
+            "guest": {"name": "Guest Buyer", "email": "authfail@example.com"},
+            "items": [{"product_id": sample_data.product.id, "quantity": 1}],
+        },
+    )
+
+    assert response.status_code == 503
+    assert response.json()["detail"] == "Stripe authentication failed. Check STRIPE_SECRET_KEY."
+
+
 def test_insufficient_stock_fails_cleanly(client, sample_data, monkeypatch):
     patch_stripe(monkeypatch)
 

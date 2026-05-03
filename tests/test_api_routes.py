@@ -132,7 +132,13 @@ def test_payment_method_routes_and_missing_customer(client, sample_data):
 def test_product_routes_filtering_update_and_validation(client, sample_data):
     created = client.post(
         "/api/v1/products",
-        json={"name": "Copper Mug", "description": "Polished", "price": 32.25, "stock": 3},
+        json={
+            "name": "Copper Mug",
+            "description": "Polished",
+            "image_url": "https://example.com/copper-mug.jpg",
+            "price": 32.25,
+            "stock": 3,
+        },
     )
     product_id = created.json()["id"]
     fetched = client.get(f"/api/v1/products/{product_id}")
@@ -146,6 +152,7 @@ def test_product_routes_filtering_update_and_validation(client, sample_data):
     missing = client.get("/api/v1/products/999999")
 
     assert created.status_code == 201
+    assert created.json()["image_url"] == "https://example.com/copper-mug.jpg"
     assert fetched.status_code == 200
     assert search.status_code == 200
     assert [row["id"] for row in search.json()] == [product_id]
@@ -154,6 +161,36 @@ def test_product_routes_filtering_update_and_validation(client, sample_data):
     assert invalid_price.status_code == 422
     assert invalid_range.status_code == 422
     assert missing.status_code == 404
+
+
+def test_auth_signup_signin_and_invalid_credentials(client):
+    suffix = uuid4().hex
+    payload = {
+        "name": "Optional Buyer",
+        "email": f"optional-{suffix}@example.com",
+        "password": "correct-horse",
+    }
+
+    signup = client.post("/api/v1/auth/signup", json=payload)
+    signin = client.post(
+        "/api/v1/auth/signin",
+        json={"email": payload["email"], "password": payload["password"]},
+    )
+    bad_password = client.post(
+        "/api/v1/auth/signin",
+        json={"email": payload["email"], "password": "wrong"},
+    )
+    missing_user = client.post(
+        "/api/v1/auth/signin",
+        json={"email": f"missing-{suffix}@example.com", "password": payload["password"]},
+    )
+
+    assert signup.status_code == 201
+    assert signup.json()["customer"]["email"] == payload["email"]
+    assert signin.status_code == 200
+    assert signin.json()["customer"]["id"] == signup.json()["customer"]["id"]
+    assert bad_password.status_code == 401
+    assert missing_user.status_code == 401
 
 
 def test_category_tag_links_and_review_routes(client, sample_data):
@@ -293,6 +330,20 @@ def test_admin_schema_routes_truncate_in_dependency_order(client, sample_data):
     assert truncated.status_code == 200
     assert Customer.objects.count() == 0
     assert Product.objects.count() == 0
+
+
+def test_admin_sample_catalog_seed_is_idempotent_and_adds_images(client):
+    first = client.post("/api/v1/admin/seed/sample-catalog")
+    second = client.post("/api/v1/admin/seed/sample-catalog")
+    products = client.get("/api/v1/products", params={"limit": 20})
+
+    assert first.status_code == 200
+    assert first.json()["products"]["created"] >= 8
+    assert second.status_code == 200
+    assert second.json()["products"]["created"] == 0
+    assert second.json()["products"]["updated"] >= 8
+    assert products.status_code == 200
+    assert all(row["image_url"] for row in products.json())
 
 
 def test_registers_db_model_query_and_collision_edges(sample_data):

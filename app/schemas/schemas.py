@@ -7,13 +7,13 @@ from pydantic import BaseModel, EmailStr, Field, model_validator
 
 class CustomerCreate(BaseModel):
     name: str
-    email: str
+    email: EmailStr
     password: str = Field(min_length=8)
 
 
 class CustomerUpdate(BaseModel):
     name: str | None = None
-    email: str | None = None
+    email: EmailStr | None = None
     password: str | None = Field(default=None, min_length=8)
 
 
@@ -75,6 +75,7 @@ class PaymentMethodOut(BaseModel):
 class ProductCreate(BaseModel):
     name: str
     description: str = ""
+    image_url: str | None = None
     price: float = Field(ge=0)
     stock: int = Field(ge=0)
 
@@ -82,6 +83,7 @@ class ProductCreate(BaseModel):
 class ProductUpdate(BaseModel):
     name: str | None = None
     description: str | None = None
+    image_url: str | None = None
     price: float | None = Field(default=None, ge=0)
     stock: int | None = Field(default=None, ge=0)
 
@@ -90,10 +92,20 @@ class ProductOut(BaseModel):
     id: int
     name: str
     description: str
+    image_url: str | None = None
     price: float
     stock: int
     created_at: str
     updated_at: str
+
+
+class SignInCreate(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=1)
+
+
+class AuthCustomerOut(BaseModel):
+    customer: CustomerOut
 
 
 class CategoryCreate(BaseModel):

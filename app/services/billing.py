@@ -26,9 +26,21 @@ stripe.api_key = settings.stripe_secret_key
 stripe.api_version = settings.stripe_api_version
 
 
+def is_placeholder_secret_key(value: str | None) -> bool:
+    if not value:
+        return True
+    normalized = value.strip().lower()
+    return "replace_me" in normalized or normalized in {"sk_test", "sk_live"}
+
+
 def require_stripe_enabled() -> None:
-    if not settings.stripe_enabled or not settings.stripe_secret_key:
+    if not settings.stripe_enabled:
         raise HTTPException(status_code=503, detail="Stripe billing is not configured")
+    if is_placeholder_secret_key(settings.stripe_secret_key):
+        raise HTTPException(
+            status_code=503,
+            detail="Stripe secret key is not configured. Set STRIPE_SECRET_KEY to a real Stripe test or live secret key.",
+        )
 
 
 def money_to_cents(amount: float) -> int:
