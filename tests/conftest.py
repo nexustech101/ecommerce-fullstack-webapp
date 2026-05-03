@@ -20,6 +20,10 @@ os.environ["STRIPE_ENABLED"] = "true"
 os.environ["STRIPE_SECRET_KEY"] = "sk_test_example"
 os.environ["STRIPE_PUBLISHABLE_KEY"] = "pk_test_example"
 os.environ["STRIPE_WEBHOOK_SECRET"] = "whsec_example"
+os.environ["PAYPAL_ENABLED"] = "true"
+os.environ["PAYPAL_CLIENT_ID"] = "paypal_client_test"
+os.environ["PAYPAL_CLIENT_SECRET"] = "paypal_secret_test"
+os.environ["PAYPAL_WEBHOOK_ID"] = "paypal_webhook_test"
 
 from app.main import app
 from app.models import (
@@ -31,6 +35,7 @@ from app.models import (
     Order,
     OrderItem,
     OrderPayment,
+    PayPalOrder,
     PaymentMethod,
     Product,
     ProductCategory,
@@ -45,6 +50,7 @@ from app.services.common import utc_now
 
 DEPENDENT_MODELS = (
     CustomerSubscription,
+    PayPalOrder,
     BillingCheckoutSession,
     OrderPayment,
     OrderItem,

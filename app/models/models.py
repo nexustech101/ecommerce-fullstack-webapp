@@ -237,6 +237,33 @@ class BillingCheckoutSession(BaseModel):
 
 @db.database_registry(
     settings.CUSTOMER_DATABASE,
+    table_name="paypal_orders",
+    key_field="id",
+    autoincrement=True,
+    unique_fields=["paypal_order_id"],
+)
+class PayPalOrder(BaseModel):
+    id: int | None = None
+    paypal_order_id: str
+    status: str
+    intent: str
+    customer_id: int | None = None
+    guest_name: str | None = None
+    guest_email: str | None = None
+    cart_snapshot: str
+    amount: float
+    currency: str
+    approval_url: str | None = None
+    order_id: int | None = None
+    capture_id: str | None = None
+    payer_id: str | None = None
+    raw_response: str | None = None
+    created_at: str
+    updated_at: str
+
+
+@db.database_registry(
+    settings.CUSTOMER_DATABASE,
     table_name="subscription_plans",
     key_field="id",
     autoincrement=True,

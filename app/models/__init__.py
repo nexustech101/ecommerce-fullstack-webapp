@@ -7,6 +7,7 @@ from app.models.models import (
     Order,
     OrderItem,
     OrderPayment,
+    PayPalOrder,
     PaymentMethod,
     Product,
     ProductCategory,
@@ -32,6 +33,7 @@ MODEL_REGISTRY = (
     OrderPayment,
     StripeCustomer,
     BillingCheckoutSession,
+    PayPalOrder,
     SubscriptionPlan,
     CustomerSubscription,
 )
@@ -45,6 +47,7 @@ __all__ = [
     "Order",
     "OrderItem",
     "OrderPayment",
+    "PayPalOrder",
     "PaymentMethod",
     "Product",
     "ProductCategory",

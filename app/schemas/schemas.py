@@ -259,6 +259,41 @@ class PortalSessionOut(BaseModel):
     url: str
 
 
+class CreatePayPalOrder(BaseModel):
+    customer_id: int | None = Field(default=None, ge=1)
+    guest: GuestCheckoutCustomer | None = None
+    items: list[BillingLineItem] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_paypal_request(self):
+        if self.customer_id is None and self.guest is None:
+            raise ValueError("Either customer_id or guest is required")
+        return self
+
+
+class PayPalOrderCreateOut(BaseModel):
+    paypal_order_id: str
+    status: str
+    approval_url: str | None = None
+
+
+class PayPalOrderStatusOut(BaseModel):
+    paypal_order_id: str
+    status: str
+    amount: float
+    currency: str
+    order_id: int | None = None
+    capture_id: str | None = None
+    approval_url: str | None = None
+
+
+class PayPalCaptureOut(BaseModel):
+    paypal_order_id: str
+    status: str
+    order_id: int | None = None
+    capture_id: str | None = None
+
+
 class SubscriptionPlanOut(BaseModel):
     id: int
     name: str

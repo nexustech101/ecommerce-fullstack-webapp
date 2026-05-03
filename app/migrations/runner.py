@@ -13,6 +13,7 @@ from app.models import (
     CustomerSubscription,
     Order,
     OrderPayment,
+    PayPalOrder,
     Product,
     StripeCustomer,
 )
@@ -72,10 +73,24 @@ def ensure_product_image_url() -> None:
     Product.objects.ensure_column("image_url", str, nullable=True)
 
 
+def ensure_paypal_order_columns() -> None:
+    if not PayPalOrder.schema_exists():
+        PayPalOrder.create_schema()
+    PayPalOrder.objects.ensure_column("customer_id", int, nullable=True)
+    PayPalOrder.objects.ensure_column("guest_name", str, nullable=True)
+    PayPalOrder.objects.ensure_column("guest_email", str, nullable=True)
+    PayPalOrder.objects.ensure_column("approval_url", str, nullable=True)
+    PayPalOrder.objects.ensure_column("order_id", int, nullable=True)
+    PayPalOrder.objects.ensure_column("capture_id", str, nullable=True)
+    PayPalOrder.objects.ensure_column("payer_id", str, nullable=True)
+    PayPalOrder.objects.ensure_column("raw_response", str, nullable=True)
+
+
 MIGRATIONS = (
     Migration("0001", "create_registered_schemas", create_registered_schemas),
     Migration("0002", "ensure_billing_columns", ensure_billing_columns),
     Migration("0003", "ensure_product_image_url", ensure_product_image_url),
+    Migration("0004", "ensure_paypal_order_columns", ensure_paypal_order_columns),
 )
 
 

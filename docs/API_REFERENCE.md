@@ -3,7 +3,7 @@
 Generated: 2026-05-03  
 Audience: frontend engineers, downstream coding agents, QA automation, and integration reviewers.
 
-This document describes the public HTTP API exposed by the FastAPI ecommerce backend. It is intended to be the working contract for frontend services that fetch catalog data, create carts/checkouts, support optional customer accounts, and integrate Stripe Embedded Checkout.
+This document describes the public HTTP API exposed by the FastAPI ecommerce backend. It is intended to be the working contract for frontend services that fetch catalog data, create carts/checkouts, support optional customer accounts, and integrate Stripe Embedded Checkout or PayPal Checkout.
 
 ## 1. Runtime Overview
 
@@ -67,8 +67,8 @@ FastAPI and registers.db exceptions are mapped to JSON error responses.
 | `404` | `{ "detail": string }` | Missing customer/product/order/session/etc. |
 | `409` | `{ "detail": string }` | Unique constraint conflict, insufficient stock. |
 | `422` | FastAPI validation error object | Missing required fields, invalid email, negative price/stock, invalid enum. |
-| `502` | `{ "detail": string }` | Stripe API request failed after reaching Stripe. |
-| `503` | `{ "detail": string }` | Stripe not configured, placeholder secret key, webhook secret missing, Stripe auth failure. |
+| `502` | `{ "detail": string }` | Stripe or PayPal API request failed after reaching the provider. |
+| `503` | `{ "detail": string }` | Payment provider not configured, placeholder secret key, webhook secret missing, provider auth failure. |
 
 Frontend recommendation: always surface `detail` when present, but keep a fallback message for FastAPI validation arrays and non-JSON errors.
 
@@ -245,6 +245,35 @@ type CustomerSubscription = {
   created_at: string;
   updated_at: string;
 };
+
+type CreatePayPalOrder = {
+  customer_id?: number;
+  guest?: GuestCheckoutCustomer;
+  items: BillingLineItem[];
+};
+
+type PayPalOrderCreateResponse = {
+  paypal_order_id: string;
+  status: string;
+  approval_url?: string | null;
+};
+
+type PayPalOrderStatus = {
+  paypal_order_id: string;
+  status: string;
+  amount: number;
+  currency: string;
+  order_id?: number | null;
+  capture_id?: string | null;
+  approval_url?: string | null;
+};
+
+type PayPalCaptureResponse = {
+  paypal_order_id: string;
+  status: string;
+  order_id?: number | null;
+  capture_id?: string | null;
+};
 ```
 
 ## 4. Endpoint Summary
@@ -271,6 +300,10 @@ type CustomerSubscription = {
 | `POST` | `/billing/portal-sessions` | Frontend | Create Stripe Billing Portal redirect. |
 | `GET` | `/billing/customers/{customer_id}/subscriptions` | Frontend | List local subscription records. |
 | `POST` | `/billing/webhooks/stripe` | Stripe only | Webhook receiver; raw body + signature. |
+| `POST` | `/payments/paypal/orders` | Frontend | Create PayPal Orders v2 order and approval URL. |
+| `GET` | `/payments/paypal/orders/{paypal_order_id}` | Frontend/admin | Read local PayPal order/capture status. |
+| `POST` | `/payments/paypal/orders/{paypal_order_id}/capture` | Frontend | Capture approved PayPal order after return. |
+| `POST` | `/payments/paypal/webhooks` | PayPal only | Webhook receiver; raw body + PayPal signature verification. |
 | `POST` | `/orders/checkout` | Dev/local | Local non-Stripe checkout path. |
 | `GET` | `/orders` | Frontend/admin | List orders. |
 | `GET` | `/orders/{order_id}` | Frontend/admin | Order detail. |
@@ -803,6 +836,121 @@ Operational requirements:
 - Do not call this endpoint from frontend code.
 - Order fulfillment is idempotent: repeated completed-session delivery should not create duplicate orders.
 
+## 8.1 PayPal Checkout
+
+PayPal is implemented as a backend-owned Orders v2 integration. The frontend never calls PayPal APIs directly with merchant credentials and never marks local orders paid.
+
+### Required Frontend Flow
+
+1. Build a cart from local products returned by `GET /products`.
+2. Collect either `customer_id` or guest `{ name, email }`.
+3. Call `POST /payments/paypal/orders`.
+4. Redirect the buyer to returned `approval_url`.
+5. PayPal redirects back to `PAYPAL_RETURN_URL` with `token={paypal_order_id}`.
+6. Frontend calls `POST /payments/paypal/orders/{paypal_order_id}/capture`.
+7. Backend captures payment with PayPal, creates the local `Order`, `OrderItem`, and `OrderPayment`, decrements stock, and persists capture state.
+
+### `POST /payments/paypal/orders`
+
+Creates a PayPal order for one-time product checkout.
+
+Request:
+
+```json
+{
+  "guest": {
+    "name": "Guest Buyer",
+    "email": "guest@example.com"
+  },
+  "items": [
+    { "product_id": 1, "quantity": 2 }
+  ]
+}
+```
+
+Rules:
+
+- `items` is required and must contain at least one product.
+- Each `quantity` must be at least `1`.
+- Either `customer_id` or `guest` is required.
+- Backend validates product existence and stock before creating the PayPal order.
+- Backend derives item names and prices from local `Product` records, not frontend-supplied prices.
+
+Response `201`:
+
+```json
+{
+  "paypal_order_id": "5O190127TN364715T",
+  "status": "CREATED",
+  "approval_url": "https://www.sandbox.paypal.com/checkoutnow?token=5O190127TN364715T"
+}
+```
+
+Common errors:
+
+- `409` for insufficient stock.
+- `503` when PayPal is disabled or credentials are placeholders.
+- `502` when PayPal order creation fails.
+
+### `GET /payments/paypal/orders/{paypal_order_id}`
+
+Returns local PayPal order state.
+
+Response `200`:
+
+```json
+{
+  "paypal_order_id": "5O190127TN364715T",
+  "status": "COMPLETED",
+  "amount": 37.0,
+  "currency": "USD",
+  "order_id": 42,
+  "capture_id": "3C679366HH908993F",
+  "approval_url": "https://www.sandbox.paypal.com/checkoutnow?token=5O190127TN364715T"
+}
+```
+
+### `POST /payments/paypal/orders/{paypal_order_id}/capture`
+
+Captures an approved PayPal order and fulfills the local ecommerce order. This endpoint is idempotent: if the PayPal order already has a local `order_id`, it returns the existing capture/order link and does not decrement stock again.
+
+Response `200`:
+
+```json
+{
+  "paypal_order_id": "5O190127TN364715T",
+  "status": "COMPLETED",
+  "order_id": 42,
+  "capture_id": "3C679366HH908993F"
+}
+```
+
+Common errors:
+
+- `404` if the PayPal order was not created by this backend.
+- `409` if stock is no longer available before capture.
+- `502` if PayPal capture fails.
+
+### `POST /payments/paypal/webhooks`
+
+PayPal webhook receiver. The backend verifies PayPal transmission headers by posting the event to PayPal's `verify-webhook-signature` endpoint.
+
+Supported reconciliation events:
+
+| PayPal Event | Backend Behavior |
+|---|---|
+| `PAYMENT.CAPTURE.COMPLETED` | Fulfill matching local PayPal order if not already fulfilled. |
+| `CHECKOUT.ORDER.COMPLETED` | Fulfill matching local PayPal order if not already fulfilled. |
+| `PAYMENT.CAPTURE.DENIED` | Mark local PayPal order with provider status. |
+| `PAYMENT.CAPTURE.REFUNDED` | Mark local PayPal order with provider status. |
+| `CHECKOUT.ORDER.VOIDED` | Mark local PayPal order with provider status. |
+
+Response `200`:
+
+```json
+{ "received": true }
+```
+
 ## 9. Orders
 
 ### `POST /orders/checkout`
@@ -1198,12 +1346,22 @@ Important environment variables:
 | `STRIPE_CURRENCY` | Currency for product `price_data`. | Usually not needed. |
 | `STRIPE_RETURN_URL` | Embedded Checkout return URL. | Indirectly visible through Stripe redirect. |
 | `STRIPE_PORTAL_RETURN_URL` | Billing Portal return URL. | Indirectly visible through Stripe redirect. |
+| `PAYPAL_ENABLED` | Enables PayPal checkout routes. | Never. |
+| `PAYPAL_CLIENT_ID` | PayPal REST app client ID. | Never. |
+| `PAYPAL_CLIENT_SECRET` | PayPal REST app client secret. | Never. |
+| `PAYPAL_WEBHOOK_ID` | PayPal webhook ID used for signature verification. | Never. |
+| `PAYPAL_ENVIRONMENT` | `sandbox` or `live`. | Never. |
+| `PAYPAL_CURRENCY` | Currency for PayPal order amounts. | Usually not needed. |
+| `PAYPAL_RETURN_URL` | PayPal approval return URL. | Indirectly visible through PayPal redirect. |
+| `PAYPAL_CANCEL_URL` | PayPal cancellation return URL. | Indirectly visible through PayPal redirect. |
 
 Current Docker return URLs:
 
 ```env
 STRIPE_RETURN_URL=http://localhost:8080/checkout/return?session_id={CHECKOUT_SESSION_ID}
 STRIPE_PORTAL_RETURN_URL=http://localhost:8080/portal
+PAYPAL_RETURN_URL=http://localhost:8080/checkout/paypal/return
+PAYPAL_CANCEL_URL=http://localhost:8080/checkout/paypal/cancel
 ```
 
 ## 14. Production Readiness Notes For Teams
@@ -1214,8 +1372,9 @@ Review these before public launch:
 - Restrict or remove `/admin/*` routes in public environments.
 - Use real Stripe Price IDs for subscription plans; seeded sample plan IDs are placeholders.
 - Configure Stripe webhook forwarding in development and Dashboard webhooks in production.
+- Configure PayPal REST app credentials, return/cancel URLs, and webhook ID before enabling PayPal in production.
 - Confirm `STRIPE_RETURN_URL` matches a frontend route after every deployment environment change.
-- Do not rely on frontend success redirects for order fulfillment; Stripe webhooks are the source of truth.
+- Do not rely on frontend success redirects as proof of payment; Stripe webhooks and PayPal capture/webhook verification are the payment sources of truth.
 - Add shipping/tax workflows before collecting shipping-sensitive orders.
 - Avoid storing raw payment method data. Use Stripe Checkout/Portal for payment details.
 - Consider paginated response envelopes later if clients need total counts; current list endpoints return arrays only.
@@ -1232,8 +1391,10 @@ Graphify was used to orient the route and schema surface before this document wa
 | Catalog/review routes | `app/api/v1/routes/catalog.py` |
 | Order routes | `app/api/v1/routes/orders.py` |
 | Billing routes | `app/api/v1/routes/billing.py` |
+| PayPal payment routes | `app/api/v1/routes/paypal.py` |
 | Admin routes | `app/api/v1/routes/admin.py` |
 | Transport schemas | `app/schemas/schemas.py` |
 | Stripe checkout/webhook services | `app/services/billing.py` |
+| PayPal checkout/webhook services | `app/services/paypal.py` |
 | Sample seed service | `app/services/seed.py` |
 | Settings | `app/core/config.py` |

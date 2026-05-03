@@ -86,6 +86,20 @@ class Settings(BaseSettings):
         "STRIPE_PORTAL_RETURN_URL",
         "http://localhost:3000/portal",
     )
+    paypal_enabled: bool = os.getenv("PAYPAL_ENABLED", "false").lower() == "true"
+    paypal_client_id: str | None = os.getenv("PAYPAL_CLIENT_ID")
+    paypal_client_secret: str | None = os.getenv("PAYPAL_CLIENT_SECRET")
+    paypal_webhook_id: str | None = os.getenv("PAYPAL_WEBHOOK_ID")
+    paypal_environment: str = os.getenv("PAYPAL_ENVIRONMENT", "sandbox")
+    paypal_currency: str = os.getenv("PAYPAL_CURRENCY", "USD")
+    paypal_return_url: str = os.getenv(
+        "PAYPAL_RETURN_URL",
+        "http://localhost:3000/checkout/paypal/return",
+    )
+    paypal_cancel_url: str = os.getenv(
+        "PAYPAL_CANCEL_URL",
+        "http://localhost:3000/checkout/paypal/cancel",
+    )
     seed_sample_data: bool = os.getenv("SEED_SAMPLE_DATA", "false").lower() == "true"
 
     log_level: str = "INFO"

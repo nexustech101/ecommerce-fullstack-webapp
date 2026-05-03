@@ -11,6 +11,8 @@ services:
       SEED_SAMPLE_DATA: "true"
       STRIPE_RETURN_URL: http://localhost:8080/checkout/return?session_id={CHECKOUT_SESSION_ID}
       STRIPE_PORTAL_RETURN_URL: http://localhost:8080/portal
+      PAYPAL_RETURN_URL: http://localhost:8080/checkout/paypal/return
+      PAYPAL_CANCEL_URL: http://localhost:8080/checkout/paypal/cancel
     volumes:
       - backend-data:/data
     ports:
@@ -30,11 +32,11 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./webapp
       dockerfile: Dockerfile
       args:
         VITE_API_BASE_URL: /api/v1
-    image: ecommerce-stripe-frontend:latest
+    image: ecommerce-stripe-webapp:latest
     depends_on:
       backend:
         condition: service_healthy

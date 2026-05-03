@@ -9,6 +9,7 @@ from app.models import (
     Order,
     OrderItem,
     OrderPayment,
+    PayPalOrder,
     PaymentMethod,
     Product,
     ProductCategory,
@@ -40,6 +41,7 @@ def schema_status():
 def truncate_all():
     for model in (
         CustomerSubscription,
+        PayPalOrder,
         BillingCheckoutSession,
         OrderPayment,
         OrderItem,
