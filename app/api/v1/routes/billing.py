@@ -20,6 +20,7 @@ from app.services.billing import (
     create_portal_session,
     find_one,
     handle_stripe_event,
+    reconcile_checkout_session,
 )
 
 router = APIRouter(prefix="/billing")
@@ -52,7 +53,7 @@ def create_billing_checkout_session(payload: CreateCheckoutSession):
 
 @router.get("/checkout-sessions/{session_id}", response_model=CheckoutSessionStatusOut)
 def get_checkout_session(session_id: str):
-    session = find_one(BillingCheckoutSession, stripe_session_id=session_id)
+    session = reconcile_checkout_session(session_id)
     if session is None:
         raise HTTPException(status_code=404, detail="Checkout session not found")
     return CheckoutSessionStatusOut(

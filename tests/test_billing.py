@@ -25,6 +25,17 @@ def patch_stripe(monkeypatch):
         ),
     )
     monkeypatch.setattr(
+        billing.stripe.checkout.Session,
+        "retrieve",
+        lambda session_id: {
+            "id": session_id,
+            "mode": "payment",
+            "status": "open",
+            "payment_status": "unpaid",
+            "subscription": None,
+        },
+    )
+    monkeypatch.setattr(
         billing.stripe.Subscription,
         "retrieve",
         lambda _subscription_id: {
@@ -323,6 +334,47 @@ def test_checkout_completed_webhook_is_idempotent(client, sample_data, monkeypat
     assert first.status_code == 200
     assert second.status_code == 200
     assert len(Order.objects.all()) == 1
+
+
+def test_checkout_status_reconciles_completed_stripe_session_without_webhook(client, sample_data, monkeypatch):
+    patch_stripe(monkeypatch)
+    created = client.post(
+        "/api/v1/billing/checkout-sessions",
+        json={
+            "mode": "payment",
+            "guest": {"name": "Guest Buyer", "email": "reconcile@example.com"},
+            "items": [{"product_id": sample_data.product.id, "quantity": 1}],
+        },
+    )
+    assert created.status_code == 201
+    session_id = created.json()["session_id"]
+
+    from app.models import Order, Product
+    from app.services import billing
+
+    monkeypatch.setattr(
+        billing.stripe.checkout.Session,
+        "retrieve",
+        lambda _session_id: {
+            "id": session_id,
+            "mode": "payment",
+            "status": "complete",
+            "payment_status": "paid",
+            "subscription": None,
+        },
+    )
+
+    first = client.get(f"/api/v1/billing/checkout-sessions/{session_id}")
+    second = client.get(f"/api/v1/billing/checkout-sessions/{session_id}")
+    product = Product.objects.require(sample_data.product.id)
+
+    assert first.status_code == 200
+    assert first.json()["status"] == "complete"
+    assert first.json()["payment_status"] == "paid"
+    assert first.json()["order_id"] is not None
+    assert second.json()["order_id"] == first.json()["order_id"]
+    assert Order.objects.count() == 1
+    assert product.stock == sample_data.product.stock - 1
 
 
 def test_subscription_webhook_updates_status(client, monkeypatch):

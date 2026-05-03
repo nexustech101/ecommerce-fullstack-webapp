@@ -58,6 +58,28 @@ def find_one(model_cls, **filters):
     return rows[0] if rows else None
 
 
+def session_value(session: dict[str, Any] | Any, key: str, default: Any = None) -> Any:
+    if isinstance(session, dict):
+        return session.get(key, default)
+    return getattr(session, key, default)
+
+
+def session_payload(session: dict[str, Any] | Any) -> dict[str, Any]:
+    if isinstance(session, dict):
+        return session
+    if hasattr(session, "to_dict_recursive"):
+        return session.to_dict_recursive()
+    if hasattr(session, "to_dict"):
+        return session.to_dict()
+    return {
+        "id": session_value(session, "id"),
+        "mode": session_value(session, "mode"),
+        "status": session_value(session, "status"),
+        "payment_status": session_value(session, "payment_status"),
+        "subscription": session_value(session, "subscription"),
+    }
+
+
 def get_or_create_stripe_customer(payload: CreateCheckoutSession) -> tuple[str, int | None, str | None, str | None]:
     now = utc_now()
     if payload.customer_id is not None:
@@ -209,17 +231,17 @@ def create_portal_session(payload: PortalSessionCreate) -> str:
 
 
 def mark_checkout_session(session: dict[str, Any], status: str) -> None:
-    local_session = find_one(BillingCheckoutSession, stripe_session_id=session["id"])
+    local_session = find_one(BillingCheckoutSession, stripe_session_id=session_value(session, "id"))
     if local_session is None:
         return
     local_session.status = status
-    local_session.payment_status = session.get("payment_status")
+    local_session.payment_status = session_value(session, "payment_status")
     local_session.updated_at = utc_now()
     local_session.save()
 
 
 def fulfill_payment_checkout(session: dict[str, Any]) -> None:
-    local_session = find_one(BillingCheckoutSession, stripe_session_id=session["id"])
+    local_session = find_one(BillingCheckoutSession, stripe_session_id=session_value(session, "id"))
     if local_session is None or local_session.order_id is not None:
         return
 
@@ -258,8 +280,8 @@ def fulfill_payment_checkout(session: dict[str, Any]) -> None:
         updated_at=now,
     )
     local_session.order_id = order.id
-    local_session.status = session.get("status", "complete")
-    local_session.payment_status = session.get("payment_status")
+    local_session.status = session_value(session, "status", "complete")
+    local_session.payment_status = session_value(session, "payment_status")
     local_session.updated_at = now
     local_session.save()
 
@@ -292,27 +314,60 @@ def upsert_subscription(subscription: dict[str, Any], *, customer_id: int | None
 
 
 def fulfill_subscription_checkout(session: dict[str, Any]) -> None:
-    local_session = find_one(BillingCheckoutSession, stripe_session_id=session["id"])
+    local_session = find_one(BillingCheckoutSession, stripe_session_id=session_value(session, "id"))
     if local_session is None:
         return
-    subscription_id = session.get("subscription")
+    subscription_id = session_value(session, "subscription")
     if not subscription_id:
         return
 
     subscription = stripe.Subscription.retrieve(subscription_id)
     local_subscription = upsert_subscription(subscription, customer_id=local_session.customer_id)
-    local_session.status = session.get("status", "complete")
-    local_session.payment_status = session.get("payment_status")
+    local_session.status = session_value(session, "status", "complete")
+    local_session.payment_status = session_value(session, "payment_status")
     local_session.subscription_id = local_subscription.stripe_subscription_id
     local_session.updated_at = utc_now()
     local_session.save()
 
 
 def handle_checkout_completed(session: dict[str, Any]) -> None:
-    if session.get("mode") == "subscription":
+    if session_value(session, "mode") == "subscription":
         fulfill_subscription_checkout(session)
     else:
         fulfill_payment_checkout(session)
+
+
+def reconcile_checkout_session(session_id: str) -> BillingCheckoutSession | None:
+    local_session = find_one(BillingCheckoutSession, stripe_session_id=session_id)
+    if local_session is None:
+        return None
+    if local_session.status == "complete" and (
+        local_session.payment_status == "paid" or local_session.order_id is not None
+    ):
+        return local_session
+    if not settings.stripe_enabled or is_placeholder_secret_key(settings.stripe_secret_key):
+        return local_session
+
+    try:
+        remote_session = stripe.checkout.Session.retrieve(session_id)
+    except stripe.error.StripeError:
+        return local_session
+
+    payload = session_payload(remote_session)
+    remote_status = payload.get("status")
+    remote_payment_status = payload.get("payment_status")
+
+    if remote_status == "complete" or remote_payment_status == "paid":
+        handle_checkout_completed(payload)
+    elif remote_status in {"expired"}:
+        mark_checkout_session(payload, remote_status)
+    else:
+        local_session.status = remote_status or local_session.status
+        local_session.payment_status = remote_payment_status or local_session.payment_status
+        local_session.updated_at = utc_now()
+        local_session.save()
+
+    return find_one(BillingCheckoutSession, stripe_session_id=session_id)
 
 
 def handle_stripe_event(event: dict[str, Any]) -> None:
