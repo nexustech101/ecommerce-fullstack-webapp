@@ -1,6 +1,6 @@
 [project]
 name = "ecommerce-backend"
-version = "1.0.0"
+version = "1.2.0"
 description = "Ecommerce backend built with FastAPI and registers.db"
 readme = "README.md"
 requires-python = ">=3.11"
